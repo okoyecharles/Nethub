@@ -1,8 +1,4 @@
-import './index.css';
+import './index.scss';
+import fetchMovies from './modules/fetchMovies.js';
 
-const getApi = async () => {
-  const res = await fetch('https://api.tvmaze.com/shows');
-  const data = await res.json();
-};
-
-getApi();
+fetchMovies()

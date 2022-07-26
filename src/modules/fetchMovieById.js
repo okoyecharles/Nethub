@@ -4,10 +4,9 @@ const fetchMovie = async (button) => {
   const data = await fetch(`https://api.tvmaze.com/shows/${index}`);
   const movie = await data.json();
 
-  console.log(movie);
-
   // display popup
-  const popup = document.getElementById('comment-popup');
+  const commentPopup = document.getElementById('comment-popup');
+  const reservationsPopup = document.getElementById('reservations-popup');
 
   const popupClose = document.createElement('span');
   popupClose.className = 'popup-close';
@@ -26,7 +25,16 @@ const fetchMovie = async (button) => {
   popupdes.innerHTML = movie.summary;
 
   poupContent.append(popupTitle, popupdes);
-  popup.append(popupClose, popupimg, poupContent);
+
+  if (button.className === 'comment') {
+    // If comment popup is clicked
+    commentPopup.append('c', popupClose, popupimg, poupContent);
+    popupClose.addEventListener('click', () => {commentPopup.innerHTML = ''})
+  } else {
+    // If reservations popup is clicked
+    reservationsPopup.append('r', popupClose, popupimg, poupContent);
+    popupClose.addEventListener('click', () => {reservationsPopup.innerHTML = ''})
+  }
 }
 
 

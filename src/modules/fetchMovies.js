@@ -1,4 +1,5 @@
 import displayComments from "./displayComments.js";
+import displayReservations from "./displayReservations.js";
 import renderMovies from "./renderMovies.js";
 
 
@@ -7,7 +8,8 @@ const fetchMovies = async () => {
     const data = await res.json();
     renderMovies(data);
 
-    displayComments()
+    displayComments();
+    displayReservations();
 };
   
 export default fetchMovies;

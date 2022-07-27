@@ -1,5 +1,5 @@
-import displayComments from "./displayComments.js";
-import displayReservations from "./displayReservations.js";
+import displayComments from "./displayCommentPopup.js";
+import displayReservations from "./displayReservationsPopup.js";
 import renderMovies from "./renderMovies.js";
 
 

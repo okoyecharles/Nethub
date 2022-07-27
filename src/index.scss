@@ -16,9 +16,11 @@ body {
 //the begin of header section
 #header {
   padding: 50px 10px;
+
   #nav {
     display: flex;
     justify-content: space-between;
+
     .logo {
       font-size: 25px;
       text-decoration: none;
@@ -26,25 +28,30 @@ body {
       text-transform: uppercase;
       font-family: sans-serif;
     }
+
     .navItems {
       display: flex;
       list-style: none;
+
       .navItem {
         padding: 0 20px;
       }
     }
   }
 }
+
 //the End of header section
 
 // movies section
 #Movies {
   margin-top: 70px;
+
   .MoviesContent {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     gap: 30px;
+
     .card {
       .buttons {
         display: flex;
@@ -54,4 +61,64 @@ body {
     }
   }
 }
+
 // End of movies section
+
+//popup comments
+#popup-back {
+  display: none;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: rgba(180, 180, 180, 0.63);
+  height: 100vh;
+  backdrop-filter: blur(20px);
+  &.active {
+    display: flex;
+  }
+
+  #comment-popup {
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+
+    .popup-close {
+      position: absolute;
+      top: 0;
+      right: 0;
+      font-size: 60px;
+    }
+  }
+
+
+}
+
+
+//popup comments
+#popup-back2 {
+  display: none;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: rgba(180, 180, 180, 0.63);
+  height: 100vh;
+  backdrop-filter: blur(20px);
+  &.active {
+    display: flex;
+  }
+
+  #reservations-popup {
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+
+    .popup-close {
+      position: absolute;
+      top: 0;
+      right: 0;
+      font-size: 60px;
+    }
+  }
+
+
+}

@@ -16,12 +16,11 @@ const renderMovies = (data) => {
 
         const buttons = document.createElement('div');
         buttons.className = 'buttons';
-
         const comments = document.createElement('button');
         comments.type = 'button';
         comments.textContent = 'Comments';
         comments.className = 'comment';
-
+        
         const Reservation = document.createElement('button');
         Reservation.type = 'button';
         Reservation.textContent = 'Reservation'

@@ -1,17 +1,19 @@
+import '@fortawesome/fontawesome-free/js/all.js';
+
 const fetchMovie = async (button) => {
   const index = button.closest('.card').getAttribute('data-index');
 
   const data = await fetch(`https://api.tvmaze.com/shows/${index}`);
   const movie = await data.json();
-
   // display popup
   const commentPopup = document.getElementById('comment-popup');
   const reservationsPopup = document.getElementById('reservations-popup');
-
-  const popupClose = document.createElement('span');
+  const popupback = document.getElementById('popup-back');
+  
+ const popupClose = document.createElement('span');
   popupClose.className = 'popup-close';
-  popupClose.innerHTML = 'x';
-
+  popupClose.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+  
   const popupimg = document.createElement('img');
   popupimg.className = 'popup-img';
   popupimg.src = movie.image.medium;
@@ -26,14 +28,23 @@ const fetchMovie = async (button) => {
 
   poupContent.append(popupTitle, popupdes);
 
+ 
   if (button.className === 'comment') {
     // If comment popup is clicked
-    commentPopup.append('c', popupClose, popupimg, poupContent);
-    popupClose.addEventListener('click', () => {commentPopup.innerHTML = ''})
+    commentPopup.append(popupClose, popupimg, poupContent);
+    popupback.classList.toggle('active')
+    popupClose.addEventListener('click', () => {
+      commentPopup.innerHTML = ''
+      popupback.classList.toggle('active')
+    })
   } else {
     // If reservations popup is clicked
-    reservationsPopup.append('r', popupClose, popupimg, poupContent);
-    popupClose.addEventListener('click', () => {reservationsPopup.innerHTML = ''})
+    reservationsPopup.append(popupClose, popupimg, poupContent);
+    popupback.classList.toggle('active')
+    popupClose.addEventListener('click', () => {
+      reservationsPopup.innerHTML = ''
+      popupback.classList.toggle('active')
+    })
   }
 }
 

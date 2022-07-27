@@ -9,6 +9,7 @@ const fetchMovie = async (button) => {
   const commentPopup = document.getElementById('comment-popup');
   const reservationsPopup = document.getElementById('reservations-popup');
   const popupback = document.getElementById('popup-back');
+  const popupback1 = document.getElementById('popup-back2');
   
  const popupClose = document.createElement('span');
   popupClose.className = 'popup-close';
@@ -40,10 +41,10 @@ const fetchMovie = async (button) => {
   } else {
     // If reservations popup is clicked
     reservationsPopup.append(popupClose, popupimg, poupContent);
-    popupback.classList.toggle('active')
+    popupback1.classList.toggle('active')
     popupClose.addEventListener('click', () => {
       reservationsPopup.innerHTML = ''
-      popupback.classList.toggle('active')
+      popupback1.classList.toggle('active')
     })
   }
 }

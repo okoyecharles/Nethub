@@ -4,7 +4,7 @@ const displayComments = () => {
   const buttons = document.querySelectorAll('.comment');
 
   buttons.forEach((button) => {
-    button.addEventListener('click', () => { fetchMovie(button); });
+    button.addEventListener('click', () => { alert('Hello '); fetchMovie(button); });
   });
 };
 

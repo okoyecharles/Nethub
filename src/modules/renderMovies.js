@@ -2,7 +2,7 @@ import { getLikes } from './manage-likes';
 
 const renderMovies = async (data) => {
   const moviesSection = document.querySelector('.MoviesContent');
-  const likesArray = await getLikes();
+  // const likesArray = await getLikes();
   data.forEach((movie) => {
     const card = document.createElement('div');
     card.className = 'card';
@@ -16,13 +16,13 @@ const renderMovies = async (data) => {
     const title = document.createElement('h3');
     title.className = 'cardTitle';
     title.textContent = movie.name;
-    const likes = document.createElement('p');
-    likes.className = 'likes';
-    const filtered = [];
-    likesArray.forEach((item) => {
-      if (item.item_id === movie.id) filtered.push(item);
-    });
-    likes.textContent = filtered[0]?.likes || 0;
+    // const likes = document.createElement('p');
+    // likes.className = 'likes';
+    // const filtered = [];
+    // likesArray.forEach((item) => {
+    //   if (item.item_id === movie.id) filtered.push(item);
+    // });
+    // likes.textContent = filtered[0]?.likes || 0;
     const buttons = document.createElement('div');
     buttons.className = 'buttons';
     const comments = document.createElement('button');
@@ -36,7 +36,7 @@ const renderMovies = async (data) => {
     Reservation.className = 'reservation';
 
     buttons.append(comments, Reservation);
-    card.append(img, title, likes, buttons);
+    card.append(img, title, buttons);
     moviesSection.append(card);
   });
 };

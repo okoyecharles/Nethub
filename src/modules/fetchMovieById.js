@@ -17,9 +17,11 @@ const fetchMovie = async (button) => {
   commentPopup.innerHTML = '';
   reservationsPopup.innerHTML = '';
 
-  const popupback = document.getElementById('popup-back');
-  const popupback1 = document.getElementById('popup-back2');
+  const popupContC = document.getElementById('popup-back');
+  const popupContR = document.getElementById('popup-back2');
 
+
+  // SHARED CONTENTS
   const popupClose = document.createElement('span');
   popupClose.className = 'popup-close';
   popupClose.innerHTML = '<i class="fa-solid fa-xmark"></i>';
@@ -28,27 +30,31 @@ const fetchMovie = async (button) => {
   popupimg.className = 'popup-img';
   popupimg.src = movie.image.medium;
 
-  const popupContent = document.createElement('div');
-  popupContent.className = 'popup-content';
-
   const popupTitle = document.createElement('h2');
   popupTitle.textContent = movie.name;
+
   const popupdes = document.createElement('div');
   popupdes.innerHTML = movie.summary;
+  // END OF SHARED CONTENTS
+
+  // COMMENT SECTION CONTAINER
+  const popupCommentContainer = document.createElement('div');
+  popupCommentContainer.className = 'popup-comment-container';
+
 
   const popupComment = document.createElement('div');
-  popupComment.className = 'popup-comments';
+  popupComment.className = 'comments';
 
-  const commentHeader = document.createElement('h2');
-  commentHeader.innerHTML = 'Comments';
-  const commentContent = document.createElement('div');
 
-  popupComment.append(commentHeader, commentContent);
+  const popupCommentHeader = document.createElement('h2');
+  popupCommentHeader.innerHTML = 'Comments';
+
+  const popupCommentContent = document.createElement('div');
 
   const popupCommentArray = await loadComments(index);
 
   if (popupCommentArray.length) {
-    const commentContentlist = document.createElement('ul');
+    const popupCommentContentlist = document.createElement('ul');
     popupCommentArray.forEach((comment) => {
       const commentItem = document.createElement('li');
 
@@ -60,17 +66,17 @@ const fetchMovie = async (button) => {
       text.innerText = comment.comment;
 
       commentItem.append(date, name, text);
-      commentContentlist.append(commentItem);
+      popupCommentContentlist.append(commentItem);
     });
-    commentContent.append(commentContentlist);
+    popupCommentContent.append(popupCommentContentlist);
   }
 
-  const popupForm = document.createElement('form');
-  popupForm.method = 'post';
-  popupForm.onsubmit = handleCommentSubmit;
+  const popupFormComment = document.createElement('form');
+  popupFormComment.method = 'post';
+  popupFormComment.onsubmit = handleCommentSubmit;
 
-  const popupFormHead = document.createElement('h2');
-  popupFormHead.innerText = 'Write A Comment';
+  const commentFormHead = document.createElement('h2');
+  commentFormHead.innerText = 'Write A Comment';
   const popupInput1 = document.createElement('input');
   popupInput1.name = 'name';
   popupInput1.placeholder = 'Name';
@@ -81,17 +87,21 @@ const fetchMovie = async (button) => {
   popupSubmit.type = 'submit';
   popupSubmit.innerText = 'Submit';
 
-  popupForm.append(popupInput1, popupInput2, popupSubmit);
-  popupContent.append(popupTitle, popupdes, popupComment, popupForm);
+
+
+  popupComment.append(popupCommentHeader, popupCommentContent);
+  popupFormComment.append(popupInput1, popupInput2, popupSubmit);
+  popupCommentContainer.append(popupComment, popupFormComment);
 
   // reservations
+  const popupReservationContent = document.createElement('div');
+  popupReservationContent.className = 'popup-reservation-content';
+
   const popupReservations = document.createElement('div');
   popupReservations.className = 'popup-reservations';
   const reservationsHeader = document.createElement('h2');
   reservationsHeader.innerHTML = 'Reservations';
   const reservationsContent = document.createElement('div');
-
-  popupReservations.append(reservationsHeader, reservationsContent);
 
   const reservationArray = await loadReservations(index);
 
@@ -113,21 +123,24 @@ const fetchMovie = async (button) => {
     reservationsContent.append(reservationContentlist);
   }
 
+  popupReservations.append(reservationsHeader, reservationsContent);
+  popupReservationContent.append(popupTitle, popupdes, );
+
   if (button.className === 'comment') {
     // If comment popup is clicked
-    commentPopup.append(popupClose, popupimg, popupContent);
-    popupback.classList.toggle('active');
+    commentPopup.append(popupClose, popupimg, popupTitle, popupdes, popupCommentContainer);
+    popupContC.classList.toggle('active');
     popupClose.addEventListener('click', () => {
       commentPopup.innerHTML = '';
-      popupback.classList.toggle('active');
+      popupContC.classList.toggle('active');
     });
   } else {
     // If reservations popup is clicked
     reservationsPopup.append(popupClose, popupimg, popupReservations);
-    popupback1.classList.toggle('active');
+    popupContR.classList.toggle('active');
     popupClose.addEventListener('click', () => {
       reservationsPopup.innerHTML = '';
-      popupback1.classList.toggle('active');
+      popupContR.classList.toggle('active');
     });
   }
 };

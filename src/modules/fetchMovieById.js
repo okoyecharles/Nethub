@@ -1,4 +1,5 @@
 import '@fortawesome/fontawesome-free/js/all.js';
+import { getCommentCounter } from './getCounters';
 import {
   handleCommentSubmit,
 } from './handleSubmit';
@@ -44,8 +45,9 @@ const fetchMovie = async (button) => {
   popupComment.dataset.popupIndex = index;
   popupComment.className = 'comments';
 
+  const counter = await  getCommentCounter(index) || 0;
   const popupCommentHeader = document.createElement('h2');
-  popupCommentHeader.innerHTML = 'Comments';
+  popupCommentHeader.innerHTML = `Comments (${counter})`;
 
   const popupCommentContent = document.createElement('div');
 

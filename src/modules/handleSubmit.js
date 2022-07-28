@@ -1,29 +1,34 @@
 import { postComment } from './fetchAppInfo';
+import { getCommentCounter } from './getCounters';
 //
 
 const handleCommentSubmit = async (event) => {
   event.preventDefault();
-  const name = event.target.elements.name.value;
-  const comment = event.target.elements.comment.value;
 
-  const ID = event.target.previousSibling.dataset.popupIndex;
+  const form = event.target;
+  const name = form.elements.name.value;
+  const comment = form.elements.comment.value;
+  const ID = form.previousSibling.dataset.popupIndex;
 
-  if (!event.target.previousSibling.children[1].children[0]) {
+  if (!form.previousSibling.children[1].children[0]) {
     const list = document.createElement('ul');
-    event.target.previousSibling.children[1].append(list);
+    form.previousSibling.children[1].append(list);
   }
 
   const newComment = document.createElement('li')
   newComment.innerText = `Now , ${name} : ${comment}`
-  console.log(event.target.previousSibling.children[1])
-  event.target.previousSibling.children[1].children[0].append(newComment)
+  console.log(form.previousSibling.children[1])
+  form.previousSibling.children[1].children[0].append(newComment)
 
   if (name && comment) {
     await postComment(ID, name, comment);
+    // Update Comment Counter
+    const counter = await getCommentCounter(ID);
+    form.previousSibling.children[0].innerText = `Comments (${counter})`
   }
 
-  event.target.elements.name.value = ''
-  event.target.elements.comment.value = ''
+  form.elements.name.value = ''
+  form.elements.comment.value = ''
 }
 
-export  {handleCommentSubmit};
+export {handleCommentSubmit};

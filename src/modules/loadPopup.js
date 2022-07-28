@@ -144,21 +144,22 @@ const loadPopup = async (button) => {
    popupReservationInput3.name = "username";
    popupReservationInput3.placeholder = "User Name";
   const popupReservationSubmit = document.createElement("button");
-  popupSubmit.type = "submit";
-  popupSubmit.innerText = "Submit";
+  popupReservationSubmit.type = "submit";
+  popupReservationSubmit.innerText = "Submit";
 
   popupComment.append(popupCommentHeader, popupCommentContent);
-  popupFormReservation.append(
-    popupReservationInput1,
-    popupReservationInput2,
-    popupReservationInput3,
-    popupReservationSubmit
-  );
+  popupFormComment.append(popupInput1, popupInput2, popupSubmit);
+
   popupCommentContainer.append(popupComment, popupFormComment);
 
 
   popupReservation.append(popupReservationHeader, popupReservationContent);
-  popupFormComment.append(popupInput1, popupInput2, popupSubmit);
+    popupFormReservation.append(
+      popupReservationInput1,
+      popupReservationInput2,
+      popupReservationInput3,
+      popupReservationSubmit
+    );
   popupReservationContainer.append(popupReservation, popupFormReservation);
 
   if (button.className === 'comment') {

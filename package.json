@@ -4,6 +4,7 @@
   "description": "This is a simple yet powerful Webpack boilerplate, which i will use as a starting point in my projects.",
   "main": "index.js",
   "scripts": {
+    "test": "jest",
     "build": "webpack --config webpack.config.js",
     "start": "webpack serve --open"
   },
@@ -19,13 +20,19 @@
   },
   "homepage": "https://github.com/OkoyeCharles/Webpack-BoilerPlate#readme",
   "devDependencies": {
+    "@babel/core": "^7.18.9",
+    "@babel/preset-env": "^7.18.9",
     "babel-eslint": "^10.1.0",
+    "babel-jest": "^28.1.3",
     "css-loader": "^6.7.1",
     "eslint": "^7.32.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.26.0",
+    "fetch-mock-jest": "^1.5.1",
     "hint": "^7.0.1",
     "html-webpack-plugin": "^5.5.0",
+    "jest": "^28.1.3",
+    "jest-environment-jsdom": "^28.1.3",
     "sass": "^1.54.0",
     "sass-loader": "^13.0.2",
     "style-loader": "^3.3.1",
@@ -38,6 +45,7 @@
     "webpack-dev-server": "^4.9.3"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^6.1.2"
+    "@fortawesome/fontawesome-free": "^6.1.2",
+    "fetch-mock": "^9.11.0"
   }
 }

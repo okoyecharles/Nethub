@@ -7,4 +7,19 @@ const getCommentCounter = async (id) => {
   return counter;
 }
 
-export {getCommentCounter}
+const getMoviesCounter = async () => {
+  const data = await fetch(`https://api.tvmaze.com/shows`)
+
+  const movies = await data.json();
+  const counter = movies.length
+
+  return counter;
+}
+
+const displayMoviesCount = async () => {
+  const all = document.querySelector('.count-movies');
+  const moviesCounter = await getMoviesCounter();
+
+  all.textContent = moviesCounter;
+} 
+export {getCommentCounter, getMoviesCounter, displayMoviesCount}

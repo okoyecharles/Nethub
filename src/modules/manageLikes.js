@@ -15,13 +15,11 @@ const postLikes = async (id, likes) => {
       },
     });
   const data = (await res).text();
-  console.log(data);
 };
 
 const getLikes = async () => {
   const res = await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${appID}/likes`);
   const data = await res.json();
-  console.log(data);
   return data;
 };
 

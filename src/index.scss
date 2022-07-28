@@ -142,8 +142,7 @@
 
 }
 
-
-//popup comments
+//popup reservations
 #popup-back2 {
   display: none;
   position: fixed;
@@ -166,6 +165,36 @@
       top: 0;
       right: 0;
       font-size: 60px;
+    }
+     .popup-reservation-container {
+      ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 10px;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        max-width: 500px;
+        gap: 10px;
+
+        input {
+          padding: 10px 20px;
+          border: none;
+          border-radius: 5px;
+        }
+
+        button {
+          width: max-content;
+          padding: 10px 20px;
+          border-radius: 8px;
+          border: none;
+          background-color: #041222;
+          color:#ffff;
+        }
+      }
     }
   }
 

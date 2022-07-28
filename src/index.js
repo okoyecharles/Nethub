@@ -2,7 +2,6 @@ import './index.scss';
 import { displayMoviesCount } from './modules/Counters';
 import fetchMovies from './modules/fetchMovies.js';
 
-
 fetchMovies();
 
 // post reservation using fetch api
@@ -24,6 +23,5 @@ fetchMovies();
 // };
 
 // postReservation();
-
 
 displayMoviesCount();

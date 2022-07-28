@@ -28,9 +28,9 @@ const renderMovies = async (data) => {
     });
     likes.textContent = filtered[0]?.likes || 0;
     likes.addEventListener('click', () => {
-        postLikes(movie.id);
-        likes.textContent = Number(likes.textContent)  + 1;
-    })
+      postLikes(movie.id);
+      likes.textContent = Number(likes.textContent) + 1;
+    });
 
     const buttonContainer = document.createElement('div');
     buttonContainer.className = 'buttons';

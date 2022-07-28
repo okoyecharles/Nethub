@@ -45,7 +45,7 @@ const loadPopup = async (button) => {
   popupComment.dataset.popupIndex = index;
   popupComment.className = 'comments';
 
-  const counter = await  getCommentCounter(index) || 0;
+  const counter = await getCommentCounter(index) || 0;
   const popupCommentHeader = document.createElement('h2');
   popupCommentHeader.innerHTML = `Comments (${counter})`;
 

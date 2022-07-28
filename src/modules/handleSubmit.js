@@ -1,5 +1,5 @@
-import { postComment } from './fetchAppInfo';
-import { getCommentCounter } from './Counters';
+import { postComment } from './fetchAppInfo.js';
+import { getCommentCounter } from './Counters.js';
 //
 
 const handleCommentSubmit = async (event) => {
@@ -15,20 +15,19 @@ const handleCommentSubmit = async (event) => {
     form.previousSibling.children[1].append(list);
   }
 
-  const newComment = document.createElement('li')
-  newComment.innerText = `Now , ${name} : ${comment}`
-  console.log(form.previousSibling.children[1])
-  form.previousSibling.children[1].children[0].append(newComment)
+  const newComment = document.createElement('li');
+  newComment.innerText = `Now , ${name} : ${comment}`;
+  form.previousSibling.children[1].children[0].append(newComment);
 
   if (name && comment) {
     await postComment(movieID, name, comment);
     // Update Comment Counter
     const counter = await getCommentCounter(movieID);
-    form.previousSibling.children[0].innerText = `Comments (${counter})`
+    form.previousSibling.children[0].innerText = `Comments (${counter})`;
   }
 
-  form.elements.name.value = ''
-  form.elements.comment.value = ''
-}
+  form.elements.name.value = '';
+  form.elements.comment.value = '';
+};
 
-export {handleCommentSubmit};
+export { handleCommentSubmit };

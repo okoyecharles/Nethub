@@ -27,7 +27,7 @@ const fetchMovie = async (button) => {
 
   const popupimg = document.createElement('img');
   popupimg.className = 'popup-img';
-  popupimg.src = movie.image.original;
+  popupimg.src = movie.image.medium;
 
   const popupTitle = document.createElement('h2');
   popupTitle.textContent = movie.name;
@@ -41,6 +41,7 @@ const fetchMovie = async (button) => {
   popupCommentContainer.className = 'popup-comment-container';
 
   const popupComment = document.createElement('div');
+  popupComment.dataset.popupIndex = index;
   popupComment.className = 'comments';
 
   const popupCommentHeader = document.createElement('h2');

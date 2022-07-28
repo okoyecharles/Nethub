@@ -4,4 +4,4 @@ import { getLikes, postLikes } from './modules/manage-likes';
 
 fetchMovies();
 
-getLikes()
+getLikes();

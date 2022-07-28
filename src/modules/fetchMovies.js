@@ -1,16 +1,14 @@
-import displayComments from "./displayCommentPopup.js";
-import displayReservations from "./displayReservationsPopup.js";
-import renderMovies from "./renderMovies.js";
-
+import displayComments from './displayCommentPopup.js';
+import displayReservations from './displayReservationsPopup.js';
+import renderMovies from './renderMovies.js';
 
 const fetchMovies = async () => {
-    const res = await fetch('https://api.tvmaze.com/shows');
-    const data = await res.json();
-    renderMovies(data);
+  const res = await fetch('https://api.tvmaze.com/shows');
+  const data = await res.json();
+  renderMovies(data);
 
-    displayComments();
-    displayReservations();
+  displayComments();
+  displayReservations();
 };
-  
+
 export default fetchMovies;
-  

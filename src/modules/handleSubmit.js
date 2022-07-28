@@ -1,4 +1,4 @@
-import { postComment } from "./fetchAppInfo";
+import { postComment } from './fetchAppInfo';
 //
 
 const handleCommentSubmit = async (event) => {
@@ -6,7 +6,7 @@ const handleCommentSubmit = async (event) => {
   const name = event.target.elements.name.value;
   const comment = event.target.elements.comment.value;
 
-  await postComment()
-}
+  await postComment();
+};
 
-export {handleCommentSubmit}
+export { handleCommentSubmit };

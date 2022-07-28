@@ -1,11 +1,11 @@
-import fetchMovie from "./fetchMovieById";
+import fetchMovie from './fetchMovieById';
 
 const displayComments = () => {
   const buttons = document.querySelectorAll('.comment');
 
-  buttons.forEach(button => {
-    button.addEventListener('click', () => {fetchMovie(button)})
-  })
+  buttons.forEach((button) => {
+    button.addEventListener('click', () => { fetchMovie(button); });
+  });
 };
 
-export default displayComments
+export default displayComments;

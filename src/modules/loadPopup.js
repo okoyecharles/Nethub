@@ -2,6 +2,7 @@ import '@fortawesome/fontawesome-free/js/all.js';
 import { getCommentCounter } from './Counters';
 import {
   handleCommentSubmit,
+  handleReservationSubmit,
 } from './handleSubmit';
 import loadComments from './loadComments';
 import loadReservations from './loadReservations';
@@ -128,7 +129,7 @@ const loadPopup = async (button) => {
   
   const popupFormReservation = document.createElement("form");
   popupFormReservation.method = "post";
-  popupFormReservation.onsubmit = handleCommentSubmit;
+  popupFormReservation.onsubmit = handleReservationSubmit;
 
   const reservationFormHead = document.createElement("h2");
   reservationFormHead.innerText = "Add A Reservation";

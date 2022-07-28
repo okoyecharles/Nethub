@@ -1,4 +1,4 @@
-import { postComment } from './fetchAppInfo.js';
+import { postComment, postReservation } from './fetchAppInfo.js';
 import { getCommentCounter } from './Counters.js';
 import { getReservationCounter } from "./Counters.js";
 //
@@ -18,11 +18,11 @@ const handleReservationSubmit = async (event) => {
   }
 
   const newReservation = document.createElement('li');
-  newReservation.innerText = `${date_start} - ${date_end} by ${username}`;
+  newReservation.innerText = `Now: ${date_start}${' - '}${date_end} ${'by'} ${username}`;
   form.previousSibling.children[1].children[0].append(newReservation);
 
   if (date_start && date_end && username) {
-    await postComment(movieID, date_start, date_end, username);
+    await postReservation(movieID, date_start, date_end, username);
     // Update Reservation Counter
     const counter = await getReservationCounter(movieID);
     form.previousSibling.children[0].innerText = `Reservations (${counter})`;

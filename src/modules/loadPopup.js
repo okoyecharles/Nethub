@@ -124,8 +124,42 @@ const loadPopup = async (button) => {
     popupReservationContent.append(popupReservationContentlist);
   }
 
+  // RESERVATIONS FORM
+  
+  const popupFormReservation = document.createElement("form");
+  popupFormReservation.method = "post";
+  popupFormReservation.onsubmit = handleCommentSubmit;
+
+  const reservationFormHead = document.createElement("h2");
+  reservationFormHead.innerText = "Add A Reservation";
+  const popupReservationInput1 = document.createElement("input");
+  popupReservationInput1.name = "date_start";
+  popupReservationInput1.placeholder = "Start Date";
+  popupReservationInput1.type = "date";
+  const popupReservationInput2 = document.createElement("input");
+  popupReservationInput2.name = "date_end";
+  popupReservationInput2.placeholder = "End Date";
+  popupReservationInput2.type = "date";
+   const popupReservationInput3 = document.createElement("input");
+   popupReservationInput3.name = "username";
+   popupReservationInput3.placeholder = "User Name";
+  const popupReservationSubmit = document.createElement("button");
+  popupSubmit.type = "submit";
+  popupSubmit.innerText = "Submit";
+
+  popupComment.append(popupCommentHeader, popupCommentContent);
+  popupFormReservation.append(
+    popupReservationInput1,
+    popupReservationInput2,
+    popupReservationInput3,
+    popupReservationSubmit
+  );
+  popupCommentContainer.append(popupComment, popupFormComment);
+
+
   popupReservation.append(popupReservationHeader, popupReservationContent);
-  popupReservationContainer.append(popupReservation);
+  popupFormComment.append(popupInput1, popupInput2, popupSubmit);
+  popupReservationContainer.append(popupReservation, popupFormReservation);
 
   if (button.className === 'comment') {
     // If comment popup is clicked

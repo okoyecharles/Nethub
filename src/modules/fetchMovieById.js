@@ -27,7 +27,7 @@ const fetchMovie = async (button) => {
 
   const popupimg = document.createElement('img');
   popupimg.className = 'popup-img';
-  popupimg.src = movie.image.medium;
+  popupimg.src = movie.image.original;
 
   const popupTitle = document.createElement('h2');
   popupTitle.textContent = movie.name;

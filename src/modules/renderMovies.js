@@ -1,5 +1,5 @@
-import fetchMovie from './fetchMovieById';
-import { getLikes } from './manage-likes';
+import fetchMovie from './fetchMovieById.js';
+import { getLikes, postLikes } from './manage-likes.js';
 
 const renderMovies = async (data) => {
   const moviesSection = document.querySelector('.MoviesContent');
@@ -20,7 +20,14 @@ const renderMovies = async (data) => {
     const likes = document.createElement('p');
     likes.className = 'likes';
     const filtered = [];
-    
+    likesArray.forEach((item) => {
+      if (item.item_id === movie.id) filtered.push(item);
+    });
+    likes.textContent = filtered[0]?.likes || 0;
+    likes.addEventListener('click', () => {
+        postLikes(movie.id);
+        likes.textContent = Number(likes.textContent)  + 1;
+    })
     const buttons = document.createElement('div');
     buttons.className = 'buttons';
     const comments = document.createElement('button');
@@ -28,22 +35,18 @@ const renderMovies = async (data) => {
     comments.textContent = 'Comments';
     comments.className = 'comment';
     comments.addEventListener('click', () => {
-        fetchMovie(comments); 
-    })
+      fetchMovie(comments);
+    });
     const Reservation = document.createElement('button');
     Reservation.type = 'button';
     Reservation.textContent = 'Reservation';
     Reservation.className = 'reservation';
     Reservation.addEventListener('click', () => {
-        fetchMovie(Reservation); 
-    })
+      fetchMovie(Reservation);
+    });
     buttons.append(comments, Reservation);
     card.append(img, title, likes, buttons);
     moviesSection.append(card);
-    likesArray.forEach((item) => {
-        if (item.item_id === movie.id) filtered.push(item);
-      });
-      likes.textContent = filtered[0]?.likes || 0;
   });
 };
 

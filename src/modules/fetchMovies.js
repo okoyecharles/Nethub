@@ -1,5 +1,3 @@
-import displayComments from './displayCommentPopup.js';
-import displayReservations from './displayReservationsPopup.js';
 import renderMovies from './renderMovies.js';
 
 const fetchMovies = async () => {

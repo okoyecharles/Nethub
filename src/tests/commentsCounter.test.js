@@ -18,3 +18,4 @@ test('get number of comments', async () => {
   const functionCount = await getCommentCounter(index);
   expect(functionCount).toBe(commentCount);
 });
+

@@ -2,10 +2,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-}
-
-body {
-  font-family: sans-serif;
+  font-family: 'poppins' ,sans-serif;
 }
 
 .container {
@@ -15,8 +12,8 @@ body {
 
 // the begin of header section
 #header {
-  padding: 50px 10px;
-
+  padding: 30px 10px;
+  background-color: #041222;
   #nav {
     display: flex;
     justify-content: space-between;
@@ -24,7 +21,7 @@ body {
     .logo {
       font-size: 25px;
       text-decoration: none;
-      color: black;
+      color: #fff;
       text-transform: uppercase;
       font-family: sans-serif;
     }
@@ -35,6 +32,13 @@ body {
 
       .nav-item {
         padding: 0 20px;
+        color: #fff;
+        font-weight: 400;
+        cursor: pointer;
+        .count-movies {
+          font-weight: 900;
+          font-size: 17px;
+        }
       }
     }
   }
@@ -53,10 +57,24 @@ body {
     gap: 30px;
 
     .card {
+      max-width: 200px;
       .buttons {
         display: flex;
         flex-direction: column;
         gap: 10px;
+        margin-top: 10px;
+        .comment,.reservation {
+          background-color: #041222;
+          border: none;
+          color: #ffff;
+          padding: 10px 0px;
+          border-radius: 8px;
+        }
+      }
+      .likesContainer {
+        display: flex;
+        gap: 10px;
+        justify-content: end;
       }
     }
   }
@@ -79,7 +97,7 @@ body {
 
   #comment-popup {
     max-width: 1000px;
-    margin: 0 auto;
+    margin: 30px auto;
     position: relative;
 
     .popup-close {
@@ -87,6 +105,37 @@ body {
       top: 0;
       right: 0;
       font-size: 60px;
+    }
+
+    .popup-comment-container {
+      ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 10px;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        max-width: 500px;
+        gap: 10px;
+
+        input {
+          padding: 10px 20px;
+          border: none;
+          border-radius: 5px;
+        }
+
+        button {
+          width: max-content;
+          padding: 10px 20px;
+          border-radius: 8px;
+          border: none;
+          background-color: #041222;
+          color:#ffff;
+        }
+      }
     }
   }
 

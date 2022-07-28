@@ -20,14 +20,22 @@ const renderMovies = async (data) => {
     cardTitle.className = 'card-title';
     cardTitle.textContent = movie.name;
 
+    const likesContainer = document.createElement('div');
+    likesContainer.className = 'likesContainer';
+    const thumbsUp = document.createElement('div');
+    thumbsUp.className = "tump";
+    thumbsUp.innerHTML = '<i class="fa-solid fa-thumbs-up"></i>';
+
     const likes = document.createElement('p');
     likes.className = 'likes';
     const filtered = [];
     likesArray.forEach((item) => {
       if (item.item_id === movie.id) filtered.push(item);
     });
-    likes.textContent = filtered[0]?.likes || 0;
-    likes.addEventListener('click', () => {
+    likes.textContent = filtered[0]?.likes || 0 ;
+    likesContainer.append(likes, thumbsUp)
+    
+    thumbsUp.addEventListener('click', () => {
       postLikes(movie.id);
       likes.textContent = Number(likes.textContent) + 1;
     });
@@ -48,7 +56,7 @@ const renderMovies = async (data) => {
     reservationButton.addEventListener('click', () => loadPopup(reservationButton));
 
     buttonContainer.append(commentButton, reservationButton);
-    card.append(cardImage, cardTitle, likes, buttonContainer);
+    card.append(cardImage, cardTitle, likesContainer, buttonContainer);
     movies.append(card);
   });
 };

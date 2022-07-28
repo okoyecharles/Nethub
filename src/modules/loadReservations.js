@@ -4,8 +4,7 @@ const loadReservations = async (id) => {
     `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/hmHPRyTIRRJiq4ZsoTAe/reservations?item_id=${id}`,
   );
   const reservations = await data.json();
-
-  return reservations;
+  return reservations.error ? [] : reservations;
 };
 
 export default loadReservations;

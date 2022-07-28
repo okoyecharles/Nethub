@@ -20,7 +20,6 @@ const fetchMovie = async (button) => {
   const popupContC = document.getElementById('popup-back');
   const popupContR = document.getElementById('popup-back2');
 
-
   // SHARED CONTENTS
   const popupClose = document.createElement('span');
   popupClose.className = 'popup-close';
@@ -41,10 +40,8 @@ const fetchMovie = async (button) => {
   const popupCommentContainer = document.createElement('div');
   popupCommentContainer.className = 'popup-comment-container';
 
-
   const popupComment = document.createElement('div');
   popupComment.className = 'comments';
-
 
   const popupCommentHeader = document.createElement('h2');
   popupCommentHeader.innerHTML = 'Comments';
@@ -87,44 +84,45 @@ const fetchMovie = async (button) => {
   popupSubmit.type = 'submit';
   popupSubmit.innerText = 'Submit';
 
-
-
   popupComment.append(popupCommentHeader, popupCommentContent);
   popupFormComment.append(popupInput1, popupInput2, popupSubmit);
   popupCommentContainer.append(popupComment, popupFormComment);
 
-  // reservations
+  // RESERVATIONS SECTION
+  const popupReservationContainer = document.createElement('div');
+  popupReservationContainer.className = 'popup-reservation-container';
+
+  const popupReservation = document.createElement('div');
+  popupReservation.className = 'reservations';
+
+  const popupReservationHeader = document.createElement('h2');
+  popupReservationHeader.innerHTML = 'Reservations';
+
   const popupReservationContent = document.createElement('div');
-  popupReservationContent.className = 'popup-reservation-content';
 
-  const popupReservations = document.createElement('div');
-  popupReservations.className = 'popup-reservations';
-  const reservationsHeader = document.createElement('h2');
-  reservationsHeader.innerHTML = 'Reservations';
-  const reservationsContent = document.createElement('div');
+  const popupReservationArray = await loadReservations(index);
+  console.log(popupReservationArray);
 
-  const reservationArray = await loadReservations(index);
-
-  if (reservationArray.length) {
-    const reservationContentlist = document.createElement('ul');
-    reservationArray.forEach((reservation) => {
+  if (popupReservationArray.length) {
+    const popupReservationContentlist = document.createElement('ul');
+    popupReservationArray.forEach((reservation) => {
       const reservationItem = document.createElement('li');
 
       const dateStart = document.createElement('span');
       dateStart.innerText = reservation.date_start;
       const dateEnd = document.createElement('span');
       dateEnd.innerText = reservation.date_end;
-      const username = document.createElement('span');
-      username.innerText = `, ${reservation.username}: `;
+      const userName = document.createElement('span');
+      userName.innerText = reservation.username;
 
-      reservationItem.append(dateStart, dateEnd, username);
-      reservationContentlist.append(reservationItem);
+      reservationItem.append(dateStart, dateEnd, userName);
+      popupReservationContentlist.append(reservationItem);
     });
-    reservationsContent.append(reservationContentlist);
+    popupReservationContent.append(popupReservationContentlist);
   }
 
-  popupReservations.append(reservationsHeader, reservationsContent);
-  popupReservationContent.append(popupTitle, popupdes, );
+  popupReservation.append(popupReservationHeader, popupReservationContent);
+  popupReservationContainer.append(popupReservation);
 
   if (button.className === 'comment') {
     // If comment popup is clicked
@@ -136,7 +134,7 @@ const fetchMovie = async (button) => {
     });
   } else {
     // If reservations popup is clicked
-    reservationsPopup.append(popupClose, popupimg, popupReservations);
+    reservationsPopup.append(popupClose, popupimg, popupTitle, popupdes, popupReservationContainer);
     popupContR.classList.toggle('active');
     popupClose.addEventListener('click', () => {
       reservationsPopup.innerHTML = '';

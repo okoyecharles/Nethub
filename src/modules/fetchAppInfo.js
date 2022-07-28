@@ -18,7 +18,6 @@ const postComment = async (id, user, comment) => {
       },
     },
   );
-  console.log(await data.text());
 };
 
 export { postComment };

@@ -1,12 +1,12 @@
 import '@fortawesome/fontawesome-free/js/all.js';
-import { getCommentCounter } from './getCounters';
+import { getCommentCounter } from './Counters';
 import {
   handleCommentSubmit,
 } from './handleSubmit';
 import loadComments from './loadComments';
 import loadReservations from './loadReservations';
 
-const fetchMovie = async (button) => {
+const loadPopup = async (button) => {
   const index = button.closest('.card').getAttribute('data-index');
 
   const data = await fetch(`https://api.tvmaze.com/shows/${index}`);
@@ -146,4 +146,4 @@ const fetchMovie = async (button) => {
   }
 };
 
-export default fetchMovie;
+export default loadPopup;

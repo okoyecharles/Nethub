@@ -1,6 +1,6 @@
 import './index.scss';
 import fetchMovies from './modules/fetchMovies.js';
-import { getLikes } from './modules/manage-likes';
+import { getLikes } from './modules/manageLikes';
 
 fetchMovies();
 

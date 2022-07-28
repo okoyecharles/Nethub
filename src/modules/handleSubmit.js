@@ -1,5 +1,5 @@
 import { postComment } from './fetchAppInfo';
-import { getCommentCounter } from './getCounters';
+import { getCommentCounter } from './Counters';
 //
 
 const handleCommentSubmit = async (event) => {
@@ -8,7 +8,7 @@ const handleCommentSubmit = async (event) => {
   const form = event.target;
   const name = form.elements.name.value;
   const comment = form.elements.comment.value;
-  const ID = form.previousSibling.dataset.popupIndex;
+  const movieID = form.previousSibling.dataset.popupIndex;
 
   if (!form.previousSibling.children[1].children[0]) {
     const list = document.createElement('ul');
@@ -21,9 +21,9 @@ const handleCommentSubmit = async (event) => {
   form.previousSibling.children[1].children[0].append(newComment)
 
   if (name && comment) {
-    await postComment(ID, name, comment);
+    await postComment(movieID, name, comment);
     // Update Comment Counter
-    const counter = await getCommentCounter(ID);
+    const counter = await getCommentCounter(movieID);
     form.previousSibling.children[0].innerText = `Comments (${counter})`
   }
 

@@ -13,7 +13,7 @@ body {
   margin: 0 auto;
 }
 
-//the begin of header section
+// the begin of header section
 #header {
   padding: 50px 10px;
 
@@ -29,11 +29,11 @@ body {
       font-family: sans-serif;
     }
 
-    .navItems {
+    .nav-items {
       display: flex;
       list-style: none;
 
-      .navItem {
+      .nav-item {
         padding: 0 20px;
       }
     }
@@ -43,10 +43,10 @@ body {
 //the End of header section
 
 // movies section
-#Movies {
+#movies {
   margin-top: 70px;
 
-  .MoviesContent {
+  .movie-section {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;

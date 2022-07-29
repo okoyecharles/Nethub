@@ -1,15 +1,13 @@
 import { postComment, postReservation } from './fetchAppInfo.js';
-import { getCommentCounter } from './Counters.js';
-import { getReservationCounter } from "./Counters.js";
-//
+import { getCommentCounter, getReservationCounter } from './Counters.js';
 
 const handleReservationSubmit = async (event) => {
   event.preventDefault();
 
   const form = event.target;
   const username = form.elements.username.value;
-  const date_start = form.elements.date_start.value;
-  const date_end = form.elements.date_end.value;
+  const dateStart = form.elements.date_start.value;
+  const dateEnd = form.elements.date_end.value;
   const movieID = form.previousSibling.dataset.popupIndex;
 
   if (!form.previousSibling.children[1].children[0]) {
@@ -18,18 +16,18 @@ const handleReservationSubmit = async (event) => {
   }
 
   const newReservation = document.createElement('li');
-  newReservation.innerText = `Now: ${date_start}${' - '}${date_end} ${'by'} ${username}`;
+  newReservation.innerText = `${dateStart} - ${dateEnd} by ${username}`;
   form.previousSibling.children[1].children[0].append(newReservation);
 
-  if (date_start && date_end && username) {
-    await postReservation(movieID, date_start, date_end, username);
+  if (dateStart && dateEnd && username) {
+    await postReservation(movieID, dateStart, dateEnd, username);
     // Update Reservation Counter
     const counter = await getReservationCounter(movieID);
     form.previousSibling.children[0].innerText = `Reservations (${counter})`;
   }
 
   form.elements.username.value = '';
-  form.elements.date_start.value = "";
+  form.elements.date_start.value = '';
   form.elements.date_end.value = '';
 };
 
@@ -42,11 +40,11 @@ const handleCommentSubmit = async (event) => {
   const movieID = form.previousSibling.dataset.popupIndex;
 
   if (!form.previousSibling.children[1].children[0]) {
-    const list = document.createElement("ul");
+    const list = document.createElement('ul');
     form.previousSibling.children[1].append(list);
   }
 
-  const newComment = document.createElement("li");
+  const newComment = document.createElement('li');
   newComment.innerText = `Now , ${name} : ${comment}`;
   form.previousSibling.children[1].children[0].append(newComment);
 
@@ -57,9 +55,8 @@ const handleCommentSubmit = async (event) => {
     form.previousSibling.children[0].innerText = `Comments (${counter})`;
   }
 
-  form.elements.name.value = "";
-  form.elements.comment.value = "";
+  form.elements.name.value = '';
+  form.elements.comment.value = '';
 };
-
 
 export { handleCommentSubmit, handleReservationSubmit };

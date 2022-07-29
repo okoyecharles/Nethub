@@ -9,7 +9,7 @@ const getCommentCounter = async (id) => {
 
 const getReservationCounter = async (id) => {
   const data = await fetch(
-    `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/hmHPRyTIRRJiq4ZsoTAe/reservations?item_id=${id}`
+    `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/hmHPRyTIRRJiq4ZsoTAe/reservations?item_id=${id}`,
   );
 
   const reservations = await data.json();
@@ -33,4 +33,6 @@ const displayMoviesCount = async () => {
 
   all.textContent = moviesCounter;
 };
-export { getCommentCounter,getReservationCounter, getMoviesCounter, displayMoviesCount };
+export {
+  getCommentCounter, getReservationCounter, getMoviesCounter, displayMoviesCount,
+};

@@ -1,5 +1,5 @@
 import './index.scss';
-import { displayMoviesCount } from './modules/Counters';
+import { displayMoviesCount } from './modules/Counters.js';
 import fetchMovies from './modules/fetchMovies.js';
 
 fetchMovies();

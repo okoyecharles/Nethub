@@ -1,6 +1,6 @@
 const appID = 'hmHPRyTIRRJiq4ZsoTAe';
 const postLikes = async (id, likes) => {
-  const res = fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${appID}/likes`,
+  fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${appID}/likes`,
     {
       body: JSON.stringify(
         {
@@ -14,7 +14,6 @@ const postLikes = async (id, likes) => {
         'Content-Type': 'application/json',
       },
     });
-  const data = (await res).text();
 };
 
 const getLikes = async () => {

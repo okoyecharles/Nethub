@@ -23,7 +23,7 @@ const renderMovies = async (data) => {
     const likesContainer = document.createElement('div');
     likesContainer.className = 'likesContainer';
     const thumbsUp = document.createElement('div');
-    thumbsUp.className = "tump";
+    thumbsUp.className = 'tump';
     thumbsUp.innerHTML = '<i class="fa-solid fa-thumbs-up"></i>';
 
     const likes = document.createElement('p');
@@ -32,9 +32,9 @@ const renderMovies = async (data) => {
     likesArray.forEach((item) => {
       if (item.item_id === movie.id) filtered.push(item);
     });
-    likes.textContent = filtered[0]?.likes || 0 ;
-    likesContainer.append(likes, thumbsUp)
-    
+    likes.textContent = filtered[0]?.likes || 0;
+    likesContainer.append(likes, thumbsUp);
+
     thumbsUp.addEventListener('click', () => {
       postLikes(movie.id);
       likes.textContent = Number(likes.textContent) + 1;

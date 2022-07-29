@@ -35,6 +35,7 @@
         color: #fff;
         font-weight: 400;
         cursor: pointer;
+
         .count-movies {
           font-weight: 900;
           font-size: 17px;
@@ -98,6 +99,7 @@
   #comment-popup {
     max-width: 1000px;
     margin: 30px auto;
+    overflow-y: scroll;
     position: relative;
 
     .popup-close {
@@ -158,6 +160,7 @@
   #reservations-popup {
     max-width: 1000px;
     margin: 0 auto;
+    overflow-y: scroll;
     position: relative;
 
     .popup-close {

@@ -1,11 +1,8 @@
 import '@fortawesome/fontawesome-free/js/all.js';
-import { getCommentCounter } from './Counters';
-import {
-  handleCommentSubmit,
-  handleReservationSubmit,
-} from './handleSubmit';
-import loadComments from './loadComments';
-import loadReservations from './loadReservations';
+import { getCommentCounter, getReservationCounter } from './Counters.js';
+import { handleCommentSubmit, handleReservationSubmit } from './handleSubmit.js';
+import loadComments from './loadComments.js';
+import loadReservations from './loadReservations.js';
 
 const loadPopup = async (button) => {
   const index = button.closest('.card').getAttribute('data-index');
@@ -46,9 +43,9 @@ const loadPopup = async (button) => {
   popupComment.dataset.popupIndex = index;
   popupComment.className = 'comments';
 
-  const counter = await getCommentCounter(index) || 0;
+  const comentCounter = await getCommentCounter(index) || 0;
   const popupCommentHeader = document.createElement('h2');
-  popupCommentHeader.innerHTML = `Comments (${counter})`;
+  popupCommentHeader.innerHTML = `Comments (${comentCounter})`;
 
   const popupCommentContent = document.createElement('div');
 
@@ -97,15 +94,16 @@ const loadPopup = async (button) => {
   popupReservationContainer.className = 'popup-reservation-container';
 
   const popupReservation = document.createElement('div');
+  popupReservation.dataset.popupIndex = index;
   popupReservation.className = 'reservations';
 
+  const ResCounter = await getReservationCounter(index) || 0;
   const popupReservationHeader = document.createElement('h2');
-  popupReservationHeader.innerHTML = 'Reservations';
+  popupReservationHeader.innerHTML = `Reservations (${ResCounter})`;
 
   const popupReservationContent = document.createElement('div');
 
   const popupReservationArray = await loadReservations(index);
-  console.log(popupReservationArray);
 
   if (popupReservationArray.length) {
     const popupReservationContentlist = document.createElement('ul');
@@ -119,48 +117,45 @@ const loadPopup = async (button) => {
       const userName = document.createElement('span');
       userName.innerText = reservation.username;
 
-      reservationItem.append(dateStart, dateEnd, userName);
+      reservationItem.append(dateStart, ' - ', dateEnd, ' by ', userName);
       popupReservationContentlist.append(reservationItem);
     });
     popupReservationContent.append(popupReservationContentlist);
   }
 
   // RESERVATIONS FORM
-  
-  const popupFormReservation = document.createElement("form");
-  popupFormReservation.method = "post";
+
+  const popupFormReservation = document.createElement('form');
+  popupFormReservation.method = 'post';
   popupFormReservation.onsubmit = handleReservationSubmit;
 
-  const reservationFormHead = document.createElement("h2");
-  reservationFormHead.innerText = "Add A Reservation";
-  const popupReservationInput1 = document.createElement("input");
-  popupReservationInput1.name = "date_start";
-  popupReservationInput1.placeholder = "Start Date";
-  popupReservationInput1.type = "date";
-  const popupReservationInput2 = document.createElement("input");
-  popupReservationInput2.name = "date_end";
-  popupReservationInput2.placeholder = "End Date";
-  popupReservationInput2.type = "date";
-   const popupReservationInput3 = document.createElement("input");
-   popupReservationInput3.name = "username";
-   popupReservationInput3.placeholder = "User Name";
-  const popupReservationSubmit = document.createElement("button");
-  popupReservationSubmit.type = "submit";
-  popupReservationSubmit.innerText = "Submit";
+  const reservationFormHead = document.createElement('h2');
+  reservationFormHead.innerText = 'Add A Reservation';
+  const popupReservationInput1 = document.createElement('input');
+  popupReservationInput1.name = 'date_start';
+  popupReservationInput1.placeholder = 'Start Date';
+  popupReservationInput1.type = 'date';
+  const popupReservationInput2 = document.createElement('input');
+  popupReservationInput2.name = 'date_end';
+  popupReservationInput2.placeholder = 'End Date';
+  popupReservationInput2.type = 'date';
+  const popupReservationInput3 = document.createElement('input');
+  popupReservationInput3.name = 'username';
+  popupReservationInput3.placeholder = 'User Name';
+  const popupReservationSubmit = document.createElement('button');
+  popupReservationSubmit.type = 'submit';
+  popupReservationSubmit.innerText = 'Submit';
 
   popupComment.append(popupCommentHeader, popupCommentContent);
   popupFormComment.append(popupInput1, popupInput2, popupSubmit);
-
   popupCommentContainer.append(popupComment, popupFormComment);
-
-
   popupReservation.append(popupReservationHeader, popupReservationContent);
-    popupFormReservation.append(
-      popupReservationInput1,
-      popupReservationInput2,
-      popupReservationInput3,
-      popupReservationSubmit
-    );
+  popupFormReservation.append(
+    popupReservationInput1,
+    popupReservationInput2,
+    popupReservationInput3,
+    popupReservationSubmit,
+  );
   popupReservationContainer.append(popupReservation, popupFormReservation);
 
   if (button.className === 'comment') {

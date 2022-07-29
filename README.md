@@ -1,6 +1,10 @@
 # Movies App
 > A movie app based on an external API, We selected the TV Maze API.
 
+# Group Video
+> In this video we explained the feature of the Movie app website.
+[Here is the Video Link](https://drive.google.com/file/d/1-S4MWGe75UxGdQ1ZwzudksCuCoze-Q_K/view?usp=sharing)
+
 ## Built With
 
 - Major languages

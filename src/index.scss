@@ -103,10 +103,17 @@
   }
 
   #comment-popup {
-    max-width: 1000px;
+    max-width: 600px;
     margin: 30px auto;
     overflow-y: scroll;
     position: relative;
+    display: flex;
+    flex-direction: column;
+
+    img {
+      width: 300px;
+      align-self: center;
+    }
 
     .popup-close {
       position: absolute;
@@ -164,10 +171,17 @@
   }
 
   #reservations-popup {
-    max-width: 1000px;
-    margin: 0 auto;
+    max-width: 600px;
+    margin: 30px auto;
     overflow-y: scroll;
     position: relative;
+    display: flex;
+    flex-direction: column;
+
+    img {
+      width: 300px;
+      align-self: center;
+    }
 
     .popup-close {
       position: absolute;

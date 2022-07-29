@@ -17,7 +17,7 @@
     - [ ] Git workflow
     - [ ] Linters
 
-## Live [⇗](https://okoyecharles.github.io/Todo-List/)
+## Live ⇗
 
 [Click here to see my Project on the Live on The Web](https://okoyecharles.github.io/js-capstone)
 
@@ -29,6 +29,12 @@
 - Once opened navigate to the top left level of the project a green code download button will be visible on the righthand side.
 - Select download Zip option from drop down menu.
 - Once the download is complete you will be able to access my project locally 😀. 
+
+**Instructions on how to run tests:**
+> To run tests (using jest) on this project please follwow the steps below
+- Download the project locally using the previous instructions.
+- Run `npm install` to install all dependencies.
+- Run `npm test` to run all tests using jest.
 
 ## Authors
 

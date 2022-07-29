@@ -1,4 +1,4 @@
-# Todo List
+# Movies App
 > A movie app based on an external API, We selected the TV Maze API.
 
 ## Built With

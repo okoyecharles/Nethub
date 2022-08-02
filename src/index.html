@@ -1,49 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Template</title>
-</head>
-<body>
-  <!--Header section-->
-  <header id="header">
-    <div class="container">
-        <nav id="nav">
-          <a href="#" class="logo">MoviesApp</a>
-          <ul class="nav-items">
-            <li class="nav-item">All (<span class="count-movies"></span>)</li>
-            <li class="nav-item">Action</li>
-            <li class="nav-item">Adult</li>
-            <li class="nav-item">Horror</li>
-            <li class="nav-item">Medical</li>
-            <li class="nav-item">Food</li>
-          </ul>
-        </nav>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+      integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>NetHub</title>
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <div class="nav__bar">
+      <a href="index.html" class="nav__logo">Nethub</a>
+
+      <div class="nav__toggle" data-nav-toggle></div>
+
+      <div class="nav__linksSearch" data-nav-links-search>
+        <ul class="nav__links">
+          <div class="nav__dropdown">
+            <li class="nav__link"><button href="#">Categories</button></li>
+            <ul class="nav__dropdownContent">
+              <li class="nav__dropdownLink"><a href="#">Action</a></li>
+              <li class="nav__dropdownLink"><a href="#">Adult</a></li>
+              <li class="nav__dropdownLink"><a href="#">Comedy</a></li>
+              <li class="nav__dropdownLink"><a href="#">Drama</a></li>
+            </ul>
+          </div>
+          <li class="nav__link"><a href="#">Other</a></li>
+        </ul>
+
+        <div class="nav__search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input
+            type="text"
+            placeholder="Movie Search"
+            class="nav__searchInput"
+          />
+        </div>
       </div>
-  </header>
-  <div id="popup-back">
-    <div id="comment-popup"></div>
-  </div>
-  <div id="popup-back2">
-    <div id="reservations-popup"></div>
-  </div>
-  
-  <!--End of Header section-->
-  <!--the movies section-->
-  <div id="movies">
-    <div class="container">
-      <div class="movie-section"></div>
     </div>
-  </div>
-  <!--the End of the movies section-->
-  <!--footer section-->
-  <footer id="footer">
+
+    <!-- Crumb Bar -->
+    <div class="crumb__bar">
+      <div data-crumb="1">
+        <span>Movies</span>
+        <span>''</span>
+      </div>
+
+    </div>
+
+    <!--Movie Grid-->
+    <div class="movies__container">
+      <div class="movies__grid" data-movie-grid>
+        <!-- Each Movie Goes Here! -->
+      </div>
+    </div>
+    
+    <!--the End of the movies section-->
+    <!--footer section-->
+    <!-- <footer id="footer">
     <div class="footer-content">
       <span>Created by Microverse under CC license</span>
     </div>
-  </footer>
-  <!--End of footer section-->
-</body>
+  </footer> -->
+    <!--End of footer section-->
+  </body>
 </html>

@@ -1,0 +1,10 @@
+.crumb__bar {
+  padding: 1em 0 2em 3em ;
+
+  & * {
+    font-size: 1.25em;
+    text-transform: uppercase;
+    color: #B3CADE;
+    font-weight: 700;
+  }
+}

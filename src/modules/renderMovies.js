@@ -1,63 +1,59 @@
 import loadPopup from './loadPopup.js';
-import { getLikes, postLikes } from './manageLikes.js';
+import { getLikes, postLikes } from './manageLikes.js'; 
 
 const renderMovies = async (data) => {
-  const movies = document.querySelector('.movie-section');
-  const likesArray = await getLikes();
+  const movieGrid = document.querySelector('[data-movie-grid]');
+  const likesArray = await getLikes(); //////
 
   // Renders all the Movies
   data.forEach((movie) => {
+    const cardContainer = document.createElement('div');
+    cardContainer.className = 'card__container';
+    cardContainer.setAttribute('data-index', `${movie.id}`);
+    cardContainer.style.background =  `url(${movie.image.medium})`;
+
     const card = document.createElement('div');
     card.className = 'card';
-    card.setAttribute('data-index', `${movie.id}`);
 
-    const cardImage = document.createElement('img');
-    cardImage.className = 'card-image';
-    cardImage.src = movie.image.medium;
-    cardImage.alt = movie.name;
+    const cardContent = document.createElement('div');
+    cardContent.className = 'card__content';
 
     const cardTitle = document.createElement('h3');
-    cardTitle.className = 'card-title';
+    cardTitle.className = 'card__title';
     cardTitle.textContent = movie.name;
 
-    const likesContainer = document.createElement('div');
-    likesContainer.className = 'likesContainer';
-    const thumbsUp = document.createElement('div');
-    thumbsUp.className = 'tump';
-    thumbsUp.innerHTML = '<i class="fa-solid fa-thumbs-up"></i>';
+    const cardCount = document.createElement('div');
+    cardCount.className = 'card__count';
 
-    const likes = document.createElement('p');
-    likes.className = 'likes';
-    const filtered = [];
-    likesArray.forEach((item) => {
-      if (item.item_id === movie.id) filtered.push(item);
-    });
-    likes.textContent = filtered[0]?.likes || 0;
-    likesContainer.append(likes, thumbsUp);
+    const likesCount = document.createElement('div');
+    likesCount.className = 'like__count';
+    likesCount.textContent = '8 likes';
 
-    thumbsUp.addEventListener('click', () => {
-      postLikes(movie.id);
-      likes.textContent = Number(likes.textContent) + 1;
-    });
+    const commentsCount = document.createElement('div');
+    commentsCount.className = 'comment__count';
+    commentsCount.textContent = '5 comments';
 
-    const buttonContainer = document.createElement('div');
-    buttonContainer.className = 'buttons';
+    const cardButtons = document.createElement('div');
+    cardButtons.className = 'card__buttons';
+
+    const likeButton = document.createElement('button');
+    likeButton.type = 'button';
+    likeButton.className = 'like__button';
+    likeButton.innerHTML = '<span>Like</span><i class="fa-solid fa-thumbs-up"></i>';
 
     const commentButton = document.createElement('button');
     commentButton.type = 'button';
-    commentButton.textContent = 'Comments';
-    commentButton.className = 'comment';
-    commentButton.addEventListener('click', () => loadPopup(commentButton));
+    commentButton.className = 'comment__button';
+    commentButton.innerHTML = '<span>Comment</span><i class="fa-solid fa-comment"></i>';
 
-    const reservationButton = document.createElement('button');
-    reservationButton.type = 'button';
-    reservationButton.textContent = 'Reservation';
-    reservationButton.className = 'reservation';
-    reservationButton.addEventListener('click', () => loadPopup(reservationButton));
+    // Append Children
+    cardCount.append(likesCount, commentsCount)
+    cardButtons.append(likeButton, commentButton)
+    cardContent.append(cardTitle, cardCount, cardButtons)
+    card.append(cardContent)
+    cardContainer.append(card)
 
-    buttonContainer.append(commentButton, reservationButton);
-    card.append(cardImage, cardTitle, likesContainer, buttonContainer);
-    movies.append(card);
+    movieGrid.append(cardContainer)
   });
 };
 

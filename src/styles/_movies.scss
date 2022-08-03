@@ -3,16 +3,17 @@
   .movies__grid {
     display: grid;
     margin-inline: auto;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    max-width: 75rem;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    max-width: 100rem;
     place-items: center;
     row-gap: 1em;
   }
 }
 
 .card__container {
-  width: 210px;
-  height: 295px;
+  font-size: 1.15em;
+  width: 241.5px;
+  height: 339.25px;
   border-radius: 0.5em;
   overflow: hidden;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
@@ -113,6 +114,10 @@
       position: relative;
       color: white;
 
+      &:last-child {
+        color: #ffd662;
+      }
+
       &::after {
         content: "";
         position: absolute;
@@ -144,6 +149,10 @@
       transition: 
         color 0.2s ease
       ;
+
+      &:active::before {
+        background: #004179;
+      }
 
       &::before {
         z-index: -1;

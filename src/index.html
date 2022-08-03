@@ -40,6 +40,7 @@
             type="text"
             placeholder="Movie Search"
             class="nav__searchInput"
+            data-movie-search
           />
         </div>
       </div>
@@ -51,8 +52,34 @@
         <span>Movies</span>
         <span>''</span>
       </div>
-
     </div>
+
+    <!-- Displays in absence of search results -->
+    <div class="no__search" style="opacity: 0; height: 0;" data-no-search>
+      <div class="no__searchIcon">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </div>
+      <div class="no__searchMessage">
+        No Search Results
+      </div>
+    </div>
+
+    <!-- Movie Grid Template -->
+    <template data-movie-template>
+      <div class="card__container card__container--skeleton skeleton" data-index="1">
+        <div class="card">
+          <div class="card__content--skeleton">
+            <div class="card__title--skeleton skeleton"></div>
+
+            <div class="card__count card__count--skeleton skeleton">
+              <div class="like__count--skeleton"></div>
+              <div class="comment__count--skeleton"></div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </template>
 
     <!--Movie Grid-->
     <div class="movies__container">
@@ -60,7 +87,7 @@
         <!-- Each Movie Goes Here! -->
       </div>
     </div>
-    
+
     <!--the End of the movies section-->
     <!--footer section-->
     <!-- <footer id="footer">

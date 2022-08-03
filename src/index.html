@@ -54,6 +54,21 @@
       </div>
     </div>
 
+    <!-- The comment popup -->
+    <div class="comment__popup" data-comment-popup>
+      <div class="comment__popupContent">
+        <i class="fa-solid fa-xmark"></i>
+        <h2>Comments</h2>
+        <ul class="comments">
+        </ul>
+        <form data-comment-popup-form>
+          <input class="comment__username" type="text" name="username" placeholder="Username">
+          <textarea class="comment__message" name="comment" cols="30" rows="5" placeholder="Add a Comment..." required></textarea>
+          <button type="submit">COMMENT</button>
+        </form>
+      </div>
+    </div>
+
     <!-- Displays in absence of search results -->
     <div class="no__search" style="opacity: 0; height: 0;" data-no-search>
       <div class="no__searchIcon">

@@ -9,7 +9,6 @@ import searchOperations from './modules/searchOps';
 
 
 
-
 // Website Skeleton Before Main Page Loads
 loadTemplate(15);
 

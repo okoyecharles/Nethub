@@ -5,6 +5,7 @@
 @import './styles/movies';
 @import './styles/template';
 @import './styles/noSearch';
+@import './styles/comments';
 
 * {
   margin: 0;
@@ -15,3 +16,17 @@
 body {
   background: #001D37;
 }
+
+/*
+==== Z-INDEX MAP
+comment__popup: 101
+
+nav__toggle : 100
+nav__linksSearch: 99
+nav__bar: 98
+
+nav__searchButton: 51
+nav__searchInput: 50
+
+card__buttons::before: -1
+*/

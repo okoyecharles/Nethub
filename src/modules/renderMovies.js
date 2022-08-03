@@ -1,9 +1,16 @@
 import convertRating from '../convertRating.js';
+import { handleCommentSubmit } from './handleSubmit.js';
+import { addComments } from './loadComments.js';
 import { getLikes, postLikes } from './manageLikes.js';
 
 const renderMovies = async (data) => {
   const movieGrid = document.querySelector('[data-movie-grid]');
   const likesArray = await getLikes();
+  const popup = document.querySelector('[data-comment-popup]')
+  const form = document.querySelector('[data-comment-popup-form]')
+  popup.firstElementChild.firstElementChild.addEventListener('click', () => {
+    popup.classList.remove('active')
+  })
 
   movieGrid.innerHTML = '';
 
@@ -48,12 +55,18 @@ const renderMovies = async (data) => {
       postLikes(parseInt(e.target.closest('.card__container').dataset.index));
       const prevLikes = parseInt(e.target.closest('.card__buttons').previousSibling.firstChild.innerHTML.slice(0, -6));
       e.target.closest('.card__buttons').previousSibling.firstChild.innerHTML = `${prevLikes + 1} likes`;
+      e.target.closest('.like__button').firstChild.innerHTML = 'Liked'
     }, {once : true})
 
     const commentButton = document.createElement('button');
     commentButton.type = 'button';
     commentButton.className = 'comment__button';
+    commentButton.dataset.commentButtonIndex = movie.id;
     commentButton.innerHTML = '<span>Comment</span><i class="fa-solid fa-comment"></i>';
+    commentButton.addEventListener('click', (e) => {
+      popup.classList.add('active')
+      popup.dataset.commentPopupIndex = e.target.closest('.comment__button').dataset.commentButtonIndex;
+    })
 
     // Append Children
     cardCount.append(likesCount, commentsCount);
@@ -64,6 +77,9 @@ const renderMovies = async (data) => {
 
     movieGrid.append(cardContainer);
   });
+
+  addComments();
+  form.addEventListener('submit', () => handleCommentSubmit)
 };
 
 export default renderMovies;

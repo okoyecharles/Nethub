@@ -12,9 +12,11 @@ import searchOperations from './modules/searchOps';
 // Website Skeleton Before Main Page Loads
 loadTemplate(15);
 
+// Operations on certain parts of the page
 navOperations();
 searchOperations();
 
+// Fetch the Movies
 fetchMovies();
 
 displayMoviesCount();

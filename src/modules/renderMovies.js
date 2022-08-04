@@ -1,15 +1,17 @@
-import convertRating from '../convertRating.js';
+import convertRating from './convertRating.js';
 import { handleCommentSubmit } from './handleSubmit.js';
 import { addComments } from './loadComments.js';
 import { getLikes, postLikes } from './manageLikes.js';
 
 const renderMovies = async (data) => {
+  const body = document.querySelector('body')
   const movieGrid = document.querySelector('[data-movie-grid]');
   const likesArray = await getLikes();
   const popup = document.querySelector('[data-comment-popup]')
-  const form = document.querySelector('[data-comment-popup-form]')
+  const commmentPopupForm = document.querySelector('[data-comment-popup-form]')
   popup.firstElementChild.firstElementChild.addEventListener('click', () => {
-    popup.classList.remove('active')
+    popup.classList.remove('active');
+    body.style.overflow = 'visible';
   })
 
   movieGrid.innerHTML = '';
@@ -38,7 +40,7 @@ const renderMovies = async (data) => {
     const likesCount = document.createElement('div');
     const [likesArrayFiltered] = likesArray.filter((item) => item.item_id === movie.id);
     likesCount.className = 'like__count';
-    likesCount.textContent = `${likesArrayFiltered?.likes || 0} likes`;
+    likesCount.textContent = `${likesArrayFiltered?.likes ?? 0} likes`;
 
     const commentsCount = document.createElement('div');
     commentsCount.className = 'comment__count';
@@ -56,7 +58,7 @@ const renderMovies = async (data) => {
       const prevLikes = parseInt(e.target.closest('.card__buttons').previousSibling.firstChild.innerHTML.slice(0, -6));
       e.target.closest('.card__buttons').previousSibling.firstChild.innerHTML = `${prevLikes + 1} likes`;
       e.target.closest('.like__button').firstChild.innerHTML = 'Liked'
-    }, {once : true})
+    }, {once : true});
 
     const commentButton = document.createElement('button');
     commentButton.type = 'button';
@@ -64,8 +66,12 @@ const renderMovies = async (data) => {
     commentButton.dataset.commentButtonIndex = movie.id;
     commentButton.innerHTML = '<span>Comment</span><i class="fa-solid fa-comment"></i>';
     commentButton.addEventListener('click', (e) => {
-      popup.classList.add('active')
+      popup.classList.add('active');
       popup.dataset.commentPopupIndex = e.target.closest('.comment__button').dataset.commentButtonIndex;
+
+      if (popup.classList.contains('active')) {
+        body.style.overflow = 'hidden';
+      }
     })
 
     // Append Children
@@ -79,7 +85,7 @@ const renderMovies = async (data) => {
   });
 
   addComments();
-  form.addEventListener('submit', () => handleCommentSubmit)
+  commmentPopupForm.onsubmit = handleCommentSubmit;
 };
 
 export default renderMovies;

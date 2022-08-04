@@ -1,4 +1,4 @@
-const postComment = async (id, user, comment) => {
+const postComment = async (id, user, message) => {
   const appID = 'hmHPRyTIRRJiq4ZsoTAe';
 
   await fetch(
@@ -8,7 +8,7 @@ const postComment = async (id, user, comment) => {
         {
           item_id: id,
           username: user,
-          comment,
+          comment: message,
         },
       ),
       method: 'POST',

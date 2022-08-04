@@ -80,10 +80,15 @@
       & > li {
         margin-bottom: .5em;
         background: #49aaff;
-        padding: .5em .8em;
+        padding: 0 .8em .5em .8em;
         border-radius: .25em;
 
-        & > div:nth-child(1) {
+        & > :nth-child(1) {
+          font-size: .75em;
+          color: #00539c;
+        }
+
+        & > div:nth-child(2) {
           font-size: 1em;
           color: #5c543b;
 
@@ -92,7 +97,7 @@
           }
         }
 
-        & > div:nth-child(2) {
+        & > div:nth-child(3) {
           font-size: .8em;
         }
       }

@@ -31,7 +31,7 @@ const displayMoviesCount = async () => {
   const all = document.querySelector('.count-movies');
   const moviesCounter = await getMoviesCounter();
 
-  all.textContent = moviesCounter;
+  // all.textContent = moviesCounter;
 };
 export {
   getCommentCounter, getReservationCounter, getMoviesCounter, displayMoviesCount,

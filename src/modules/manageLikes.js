@@ -1,23 +1,25 @@
-const appID = 'hmHPRyTIRRJiq4ZsoTAe';
-const postLikes = async (id, likes) => {
-  fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${appID}/likes`,
+import appID from "./AppID";
+
+const ID = appID;
+const postLikes = async (id) => {
+  fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${ID}/likes`,
     {
       body: JSON.stringify(
         {
           item_id: id,
-          likes,
         },
       ),
       method: 'POST',
-      mode: 'cors',
-      headers: {
+      headers: { 
         'Content-Type': 'application/json',
       },
     });
+  
 };
 
 const getLikes = async () => {
-  const res = await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${appID}/likes`);
+  const res = await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${ID}/likes`);
+
   const data = await res.json();
   return data;
 };

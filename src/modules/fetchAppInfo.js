@@ -1,8 +1,10 @@
+import appID from "./AppID";
+
 const postComment = async (id, user, message) => {
-  const appID = 'hmHPRyTIRRJiq4ZsoTAe';
+  const ID = appID;
 
   await fetch(
-    `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${appID}/comments`,
+    `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${ID}/comments`,
     {
       body: JSON.stringify(
         {
@@ -21,10 +23,10 @@ const postComment = async (id, user, message) => {
 };
 
 const postReservation = async (id, dateStart, dateEnd, username) => {
-  const appID = 'hmHPRyTIRRJiq4ZsoTAe';
+  const ID = appID;
 
   await fetch(
-    `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${appID}/reservations`,
+    `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${ID}/reservations`,
     {
       body: JSON.stringify({
         item_id: id,

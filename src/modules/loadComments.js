@@ -1,7 +1,8 @@
+import appID from "./AppID.js";
 import getTimeSpan from "./convertDate.js";
 
 const loadComments = async (id) => {
-  const data = await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/hmHPRyTIRRJiq4ZsoTAe/comments?item_id=${id}`);
+  const data = await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${appID}/comments?item_id=${id}`);
   const comments = await data.json();
 
   return comments;

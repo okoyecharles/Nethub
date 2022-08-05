@@ -7,8 +7,6 @@ import fetchMovies from './modules/fetchMovies.js';
 import navOperations from './modules/navOps';
 import searchOperations from './modules/searchOps';
 
-
-
 // Website Skeleton Before Main Page Loads
 loadTemplate(15);
 

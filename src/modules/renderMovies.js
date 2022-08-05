@@ -1,18 +1,19 @@
 import convertRating from './convertRating.js';
 import { handleCommentSubmit } from './handleSubmit.js';
+import handleInfo from './infoOps.js';
 import { addComments } from './loadComments.js';
 import { getLikes, postLikes } from './manageLikes.js';
 
 const renderMovies = async (data) => {
-  const body = document.querySelector('body')
+  const body = document.querySelector('body');
   const movieGrid = document.querySelector('[data-movie-grid]');
   const likesArray = await getLikes();
-  const popup = document.querySelector('[data-comment-popup]')
-  const commmentPopupForm = document.querySelector('[data-comment-popup-form]')
+  const popup = document.querySelector('[data-comment-popup]');
+  const commmentPopupForm = document.querySelector('[data-comment-popup-form]');
   popup.firstElementChild.firstElementChild.addEventListener('click', () => {
     popup.classList.remove('active');
     body.style.overflow = 'visible';
-  })
+  });
 
   movieGrid.innerHTML = '';
 
@@ -44,7 +45,7 @@ const renderMovies = async (data) => {
 
     const commentsCount = document.createElement('div');
     commentsCount.className = 'comment__count';
-    commentsCount.innerHTML = convertRating(movie.rating.average)
+    commentsCount.innerHTML = convertRating(movie.rating.average);
 
     const cardButtons = document.createElement('div');
     cardButtons.className = 'card__buttons';
@@ -57,8 +58,8 @@ const renderMovies = async (data) => {
       postLikes(parseInt(e.target.closest('.card__container').dataset.index));
       const prevLikes = parseInt(e.target.closest('.card__buttons').previousSibling.firstChild.innerHTML.slice(0, -6));
       e.target.closest('.card__buttons').previousSibling.firstChild.innerHTML = `${prevLikes + 1} likes`;
-      e.target.closest('.like__button').firstChild.innerHTML = 'Liked'
-    }, {once : true});
+      e.target.closest('.like__button').firstChild.innerHTML = 'Liked';
+    }, { once: true });
 
     const commentButton = document.createElement('button');
     commentButton.type = 'button';
@@ -72,13 +73,21 @@ const renderMovies = async (data) => {
       if (popup.classList.contains('active')) {
         body.style.overflow = 'hidden';
       }
-    })
+    });
+
+    const cardInfo = document.createElement('i');
+    cardInfo.className = 'fa-solid fa-circle-info card__info';
+    cardInfo.onclick = handleInfo;
+
+    const cardDescription = document.createElement('p');
+    cardDescription.innerText = movie.summary;
+    cardDescription.style.display = 'none';
 
     // Append Children
     cardCount.append(likesCount, commentsCount);
     cardButtons.append(likeButton, commentButton);
     cardContent.append(cardTitle, cardCount, cardButtons);
-    card.append(cardContent);
+    card.append(cardContent, cardInfo, cardDescription);
     cardContainer.append(card);
 
     movieGrid.append(cardContainer);

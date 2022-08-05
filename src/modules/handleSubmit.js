@@ -18,7 +18,7 @@ const handleCommentSubmit = async (e) => {
   nameUI.innerHTML = name;
   const messageUI = document.createElement('div');
   messageUI.innerHTML = comment;
-  newComment.append(dateUI, nameUI, messageUI)
+  newComment.append(dateUI, nameUI, messageUI);
 
   form.previousElementSibling.prepend(newComment);
 

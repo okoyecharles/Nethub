@@ -36,13 +36,12 @@
     box-shadow: 0 0 2em rgba(0, 0, 0, 0.488), inset 0 0 1em #ffffff23;
     max-height: 90vh;
     pointer-events: none;
-    transition: transform .25s ease-out;
+    transition: transform 0.25s ease-out;
 
     & > i {
       position: absolute;
-      top: .125em;
-      right: .25em;
-
+      top: 0.125em;
+      right: 0.25em;
       font-size: 1.75em;
       color: #ffd662;
     }
@@ -78,13 +77,13 @@
       list-style: none;
 
       & > li {
-        margin-bottom: .5em;
+        margin-bottom: 0.5em;
         background: #49aaff;
-        padding: 0 .8em .5em .8em;
-        border-radius: .25em;
+        padding: 0 0.8em 0.5em 0.8em;
+        border-radius: 0.25em;
 
         & > time:nth-child(1) {
-          font-size: .75em;
+          font-size: 0.75em;
           color: #00539c;
         }
 
@@ -98,7 +97,7 @@
         }
 
         & > div:nth-child(3) {
-          font-size: .8em;
+          font-size: 0.8em;
         }
       }
     }
@@ -130,7 +129,6 @@
         background: #ffd662;
         font-size: 0.8em;
         cursor: pointer;
-
         transition: background 0.2s ease;
 
         &:active::before {

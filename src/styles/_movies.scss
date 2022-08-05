@@ -1,5 +1,4 @@
 .movies__container {
-  
   .movies__grid {
     display: grid;
     margin-inline: auto;
@@ -17,19 +16,17 @@
   border-radius: 0.5em;
   overflow: hidden;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-
   transition: transform 0.25s ease-in, transform-origin 0.25s ease;
 
-  &:hover, &:focus-within {
+  &:hover,
+  &:focus-within {
     transform: scale(1.05);
     transform-origin: bottom;
 
     .card {
-      box-shadow: 
+      box-shadow:
         inset 0 100px 40px rgba(0, 83, 156, 0.52),
-        inset 0 -200px 60px rgba(0, 0, 0, 0.8)
-      ;
-
+        inset 0 -200px 60px rgba(0, 0, 0, 0.8);
 
       &__content {
         transform: translateY(-2.5em);
@@ -50,8 +47,18 @@
         &:nth-child(1) {
           transition: 0.15s 0.25s;
         }
+
         &:nth-child(2) {
           transition: 0.25s 0.25s;
+        }
+      }
+
+      &__info {
+        opacity: 1;
+        transition: transform 0.3s ease;
+
+        &:hover {
+          transform: scale(1.2);
         }
       }
     }
@@ -59,16 +66,14 @@
 }
 
 .card {
-  box-shadow: 
+  box-shadow:
     inset 0 175px 30px rgba(0, 83, 156, 0),
-    inset 0 -150px 40px rgba(0, 0, 0, 0.52)
-  ;
-  
+    inset 0 -150px 40px rgba(0, 0, 0, 0.52);
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-
+  position: relative;
   transition: box-shadow 0.5s ease;
 
   &__content {
@@ -81,11 +86,9 @@
     font-size: 1.35em;
     padding-left: 0.5em;
     margin-bottom: 0.5em;
-
     white-space: nowrap;
     overflow-x: hidden;
     text-overflow: ellipsis;
-
     transition: transform 0.2s ease-in;
   }
 
@@ -105,7 +108,6 @@
       left: 0;
       transform-origin: left;
       transform: scaleX(0);
-
       transition: transform 0.1s ease-in;
     }
 
@@ -145,10 +147,7 @@
       cursor: pointer;
       overflow: hidden;
       transform: translateY(5em);
-
-      transition: 
-        color 0.2s ease
-      ;
+      transition: color 0.2s ease;
 
       &:active::before {
         background: #004179;
@@ -162,12 +161,10 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: #00539C;
+        background: #00539c;
         border-radius: 0 0 2em 2em;
-
         transform: translateX(-100%);
-
-        transition: .15s ease;
+        transition: 0.15s ease;
       }
 
       &:hover {
@@ -179,10 +176,19 @@
         }
       }
 
-
       span {
         margin-right: 0.25em;
       }
     }
+  }
+
+  &__info {
+    color: #ffd662;
+    position: absolute;
+    top: 0.5em;
+    right: 0.5em;
+    font-size: 1.25em;
+    opacity: 0.5;
+    transition: opacity 0.25s ease-in;
   }
 }

@@ -1,4 +1,4 @@
-import appID from "./AppID";
+import appID from './AppID';
 
 const postComment = async (id, user, message) => {
   const ID = appID;

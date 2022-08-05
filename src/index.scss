@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
-
 @import './styles/nav';
 @import './styles/crumb';
 @import './styles/movies';
 @import './styles/template';
 @import './styles/noSearch';
 @import './styles/comments';
+@import './styles/info';
 
 * {
   margin: 0;
@@ -14,11 +14,12 @@
 }
 
 body {
-  background: #001D37;
+  background: #001d37;
 }
 
 /*
 ==== Z-INDEX MAP
+info__popup: 102
 comment__popup: 101
 
 nav__toggle : 100

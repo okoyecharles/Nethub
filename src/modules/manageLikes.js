@@ -1,4 +1,4 @@
-import appID from "./AppID";
+import appID from './AppID';
 
 const ID = appID;
 const postLikes = async (id) => {
@@ -10,11 +10,10 @@ const postLikes = async (id) => {
         },
       ),
       method: 'POST',
-      headers: { 
+      headers: {
         'Content-Type': 'application/json',
       },
     });
-  
 };
 
 const getLikes = async () => {

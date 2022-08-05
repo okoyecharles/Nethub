@@ -12,6 +12,7 @@
 
     &:hover {
       transform: translate(0);
+
       .card {
         box-shadow: 0 0 0;
       }
@@ -19,11 +20,10 @@
   }
 }
 
-
 .card__title--skeleton {
   width: 100%;
   height: 2em;
-  border-radius: .5em;
+  border-radius: 0.5em;
   background: #ffd56295;
   margin-bottom: 1em;
   transform: scale(0.8);
@@ -37,13 +37,15 @@
   display: none;
 }
 
-.like__count--skeleton, .comment__count--skeleton {
+.like__count--skeleton,
+.comment__count--skeleton {
   width: 3em;
-  height: .5em;
+  height: 0.5em;
   background: rgba(255, 255, 255, 0.264);
 }
 
-.like__count--skeleton::after, .comment__count--skeleton::after {
+.like__count--skeleton::after,
+.comment__count--skeleton::after {
   display: none;
 }
 
@@ -51,6 +53,7 @@
   from {
     opacity: 0.9;
   }
+
   to {
     opacity: 0.6;
   }

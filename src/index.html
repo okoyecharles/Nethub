@@ -1,114 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
-      integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <title>NetHub</title>
-  </head>
-  <body>
-    <!-- Navigation Bar -->
-    <div class="nav__bar">
-      <a href="index.html" class="nav__logo">Nethub</a>
 
-      <div class="nav__toggle" data-nav-toggle></div>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+    integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>NetHub</title>
+</head>
 
-      <div class="nav__linksSearch" data-nav-links-search>
-        <ul class="nav__links">
-          <div class="nav__dropdown">
-            <li class="nav__link"><button href="#">Categories</button></li>
-            <ul class="nav__dropdownContent">
-              <li class="nav__dropdownLink"><a href="#">Action</a></li>
-              <li class="nav__dropdownLink"><a href="#">Adult</a></li>
-              <li class="nav__dropdownLink"><a href="#">Comedy</a></li>
-              <li class="nav__dropdownLink"><a href="#">Drama</a></li>
-            </ul>
-          </div>
-          <li class="nav__link"><a href="#">Other</a></li>
-        </ul>
+<body>
+  <!-- Navigation Bar -->
+  <div class="nav__bar">
+    <a href="index.html" class="nav__logo">Nethub</a>
 
-        <div class="nav__search">
-          <i class="fa-solid fa-magnifying-glass"></i>
-          <input
-            type="text"
-            placeholder="Movie Search"
-            class="nav__searchInput"
-            data-movie-search
-          />
+    <div class="nav__toggle" data-nav-toggle></div>
+
+    <div class="nav__linksSearch" data-nav-links-search>
+      <ul class="nav__links">
+        <div class="nav__dropdown">
+          <li class="nav__link"><button href="#">Categories</button></li>
+          <ul class="nav__dropdownContent">
+            <li class="nav__dropdownLink"><a href="#">Action</a></li>
+            <li class="nav__dropdownLink"><a href="#">Adult</a></li>
+            <li class="nav__dropdownLink"><a href="#">Comedy</a></li>
+            <li class="nav__dropdownLink"><a href="#">Drama</a></li>
+          </ul>
         </div>
-      </div>
-    </div>
+        <li class="nav__link"><a href="#">Other</a></li>
+      </ul>
 
-    <!-- Crumb Bar -->
-    <div class="crumb__bar" data-crumb-bar>
-      <div data-crumb="1">
-        <span>Movies</span>
-      </div>
-    </div>
-
-    <!-- The comment popup -->
-    <div class="comment__popup" data-comment-popup>
-      <div class="comment__popupContent">
-        <i class="fa-solid fa-xmark"></i>
-        <h2>Comments</h2>
-        <ul class="comments">
-        </ul>
-        <form data-comment-popup-form>
-          <input class="comment__username" type="text" name="username" placeholder="Username">
-          <textarea class="comment__message" name="comment" cols="30" rows="5" placeholder="Add a Comment..." required></textarea>
-          <button type="submit">COMMENT</button>
-        </form>
-      </div>
-    </div>
-
-    <!-- Displays in absence of search results -->
-    <div class="no__search" style="opacity: 0; height: 0;" data-no-search>
-      <div class="no__searchIcon">
+      <div class="nav__search">
         <i class="fa-solid fa-magnifying-glass"></i>
-      </div>
-      <div class="no__searchMessage">
-        No Search Results
+        <input type="text" placeholder="Movie Search" class="nav__searchInput" data-movie-search />
       </div>
     </div>
+  </div>
 
-    <!-- Movie Grid Template -->
-    <template data-movie-template>
-      <div class="card__container card__container--skeleton skeleton" data-index="1">
-        <div class="card">
-          <div class="card__content--skeleton">
-            <div class="card__title--skeleton skeleton"></div>
+  <!-- Crumb Bar -->
+  <div class="crumb__bar" data-crumb-bar>
+    <div data-crumb="1">
+      <span>Movies</span>
+    </div>
+  </div>
 
-            <div class="card__count card__count--skeleton skeleton">
-              <div class="like__count--skeleton"></div>
-              <div class="comment__count--skeleton"></div>
-            </div>
+  <!-- The comment popup -->
+  <div class="comment__popup" data-comment-popup>
+    <div class="comment__popupContent">
+      <i class="fa-solid fa-xmark"></i>
+      <h2>Comments</h2>
+      <ul class="comments">
+      </ul>
+      <form data-comment-popup-form>
+        <input class="comment__username" type="text" name="username" placeholder="Username">
+        <textarea class="comment__message" name="comment" cols="30" rows="5" placeholder="Add a Comment..."
+          required></textarea>
+        <button type="submit">COMMENT</button>
+      </form>
+    </div>
+  </div>
 
+  <!-- The Info popup -->
+  <div class="info__popup" data-info-popup>
+    <div class="info__popupContent">
+      <i class="fa-solid fa-xmark"></i>
+      <h2>Info</h2>
+      <article class="info">
+        <header>Under the Dome</header>
+        <div>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, omnis ipsam quidem animi explicabo eum quisquam officiis voluptatum optio, a ducimus, fuga nisi illum suscipit hic. Repudiandae saepe vitae dignissimos.
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <!-- Displays in absence of search results -->
+  <div class="no__search" style="opacity: 0; height: 0;" data-no-search>
+    <div class="no__searchIcon">
+      <i class="fa-solid fa-magnifying-glass"></i>
+    </div>
+    <div class="no__searchMessage">
+      No Search Results
+    </div>
+  </div>
+
+  <!-- Movie Grid Template -->
+  <template data-movie-template>
+    <div class="card__container card__container--skeleton skeleton" data-index="1">
+      <div class="card">
+        <div class="card__content--skeleton">
+          <div class="card__title--skeleton skeleton"></div>
+
+          <div class="card__count card__count--skeleton skeleton">
+            <div class="like__count--skeleton"></div>
+            <div class="comment__count--skeleton"></div>
           </div>
+
         </div>
       </div>
-    </template>
-
-    <!--Movie Grid-->
-    <div class="movies__container">
-      <div class="movies__grid" data-movie-grid>
-        <!-- Each Movie Goes Here! -->
-      </div>
     </div>
+  </template>
 
-    <!--the End of the movies section-->
-    <!--footer section-->
-    <!-- <footer id="footer">
+  <!--Movie Grid-->
+  <div class="movies__container">
+    <div class="movies__grid" data-movie-grid>
+      <!-- Each Movie Goes Here! -->
+    </div>
+  </div>
+
+  <!--the End of the movies section-->
+  <!--footer section-->
+  <!-- <footer id="footer">
     <div class="footer-content">
       <span>Created by Microverse under CC license</span>
     </div>
   </footer> -->
-    <!--End of footer section-->
-  </body>
+  <!--End of footer section-->
+</body>
+
 </html>

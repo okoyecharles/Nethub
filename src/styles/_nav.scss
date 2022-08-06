@@ -95,7 +95,7 @@
   }
 
   &__dropdownContent.active {
-    height: fit-content;
+    height: fit-content; /* stylelint-disable-line */
     transform: translateX(0) !important;
     opacity: 1 !important;
     transition:
@@ -203,7 +203,7 @@
 
     &__dropdownContent,
     &__dropdownContent.active {
-      height: fit-content;
+      height: fit-content;  /* stylelint-disable-line */
       opacity: 0;
       transform: translateY(-1em);
       background: #00213d;

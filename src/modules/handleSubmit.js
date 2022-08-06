@@ -1,62 +1,33 @@
-import { postComment, postReservation } from './fetchAppInfo.js';
-import { getCommentCounter, getReservationCounter } from './Counters.js';
+import { postComment } from './fetchAppInfo.js';
 
-const handleReservationSubmit = async (event) => {
-  event.preventDefault();
+const handleCommentSubmit = async (e) => {
+  // return false
+  e.preventDefault();
 
-  const form = event.target;
-  const username = form.elements.username.value;
-  const dateStart = form.elements.date_start.value;
-  const dateEnd = form.elements.date_end.value;
-  const movieID = form.previousSibling.dataset.popupIndex;
-
-  if (!form.previousSibling.children[1].children[0]) {
-    const list = document.createElement('ul');
-    form.previousSibling.children[1].append(list);
-  }
-
-  const newReservation = document.createElement('li');
-  newReservation.innerText = `${dateStart} - ${dateEnd} by ${username}`;
-  form.previousSibling.children[1].children[0].append(newReservation);
-
-  if (dateStart && dateEnd && username) {
-    await postReservation(movieID, dateStart, dateEnd, username);
-    // Update Reservation Counter
-    const counter = await getReservationCounter(movieID);
-    form.previousSibling.children[0].innerText = `Reservations (${counter})`;
-  }
-
-  form.elements.username.value = '';
-  form.elements.date_start.value = '';
-  form.elements.date_end.value = '';
-};
-
-const handleCommentSubmit = async (event) => {
-  event.preventDefault();
-
-  const form = event.target;
-  const name = form.elements.name.value;
+  const form = e.target;
+  let name = form.elements.username.value;
   const comment = form.elements.comment.value;
-  const movieID = form.previousSibling.dataset.popupIndex;
+  const movieID = form.parentElement.parentElement.dataset.commentPopupIndex;
 
-  if (!form.previousSibling.children[1].children[0]) {
-    const list = document.createElement('ul');
-    form.previousSibling.children[1].append(list);
-  }
+  name = name.replace(/\s/g, '').length ? name : name = 'Anonymous';
 
   const newComment = document.createElement('li');
-  newComment.innerText = `Now , ${name} : ${comment}`;
-  form.previousSibling.children[1].children[0].append(newComment);
+  const dateUI = document.createElement('span');
+  dateUI.innerText = 'Now';
+  const nameUI = document.createElement('div');
+  nameUI.innerHTML = name;
+  const messageUI = document.createElement('div');
+  messageUI.innerHTML = comment;
+  newComment.append(dateUI, nameUI, messageUI);
+
+  form.previousElementSibling.prepend(newComment);
 
   if (name && comment) {
     await postComment(movieID, name, comment);
-    // Update Comment Counter
-    const counter = await getCommentCounter(movieID);
-    form.previousSibling.children[0].innerText = `Comments (${counter})`;
   }
 
-  form.elements.name.value = '';
+  form.elements.username.value = '';
   form.elements.comment.value = '';
 };
 
-export { handleCommentSubmit, handleReservationSubmit };
+export default handleCommentSubmit;

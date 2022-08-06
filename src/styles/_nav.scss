@@ -125,6 +125,7 @@
   }
 
   &__link a,
+  &__link i,
   &__link button,
   &__dropdownLink a {
     border: none;
@@ -133,6 +134,10 @@
     text-decoration: none;
     text-transform: uppercase;
     color: #ffd662;
+  }
+
+  &__link i {
+    margin-left: .5em;
   }
 
   &__search {

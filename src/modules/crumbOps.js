@@ -7,7 +7,6 @@ const handleCategoryClick = () => {
   const crumbBar = document.querySelector('[data-crumb-bar]');
   const crumbReset = crumbBar.firstElementChild;
   const categoryLinks = document.querySelectorAll('[data-category-link] > a');
-  const categoryToggle = document.querySelector('[data-category-toggle]');
 
   const mobileNav = document.querySelector('[data-nav-links-search]');
   const body = document.querySelector('body');

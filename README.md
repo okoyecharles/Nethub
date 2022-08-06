@@ -1,31 +1,31 @@
-# Movies App
-> A movie app based on an external API, We selected the TV Maze API.
+# Nethub
+> A Movie webapp that extracts information from an external API. TV Maze to be precise, including functionalities like comments, likes and extra app info. feel free to check it out.
 
-# Group Video
-> In this video we explained the feature of the Movie app website.
-[Here is the Video Link](https://drive.google.com/file/d/1-S4MWGe75UxGdQ1ZwzudksCuCoze-Q_K/view?usp=sharing)
+# App Preview
+Below is a preview of The Nethub App
+<img width="1281" alt="Nethub Preview" src="https://user-images.githubusercontent.com/102174805/183248326-17ae0d38-ffe8-4714-a514-3335f713c89b.png">
 
 ## Built With
 
 - Major languages
-    - [ ] HTML
-    - [ ] SCSS
-    - [ ] JavaScript
+    - [x] HTML
+    - [x] SCSS
+    - [x] JavaScript
 
 - Technologies used
-    - [ ] TV Maze API
-    - [ ] Git workflow
-    - [ ] Linters
+    - [x] TV Maze API
+    - [x] Git workflow
+    - [x] Linters
 
 ## Live ⇗
 
-[Click here to see my Project on the Live on The Web](https://okoyecharles.github.io/js-capstone)
+[Click here to see my Project on the Live on The Web](https://okoyecharles.github.io/Nethub/)
 
 
 ## Taking Actions
 **Instructions on how to access my project locally:** 
 > To Access my project locally please follow the instructions listed below
-- Enter this url: [https://github.com/OkoyeCharles/js-capstone](https://github.com/OkoyeCharles/js-capstone) in your web browser.
+- Enter this url: [https://okoyecharles.github.io/Nethub/](https://okoyecharles.github.io/Nethub/) in your web browser.
 - Once opened navigate to the top left level of the project a green code download button will be visible on the righthand side.
 - Select download Zip option from drop down menu.
 - Once the download is complete you will be able to access my project locally 😀. 
@@ -59,7 +59,7 @@
 
 ## 🤝 Contributing
 
-If you have a suggestion that would make this better, please fork the repository and create a pull request. You can also simply open an issue with the tag "enhancement". Remember to support the project with a star. 
+If you have a suggestion that would make this better, please fork the repository and create a pull request. You can also simply open an issue with the tag "enhancement". Remember to support the project with a star ⭐️. Yes it's necessary.
 
 ## Acknowledgments
 

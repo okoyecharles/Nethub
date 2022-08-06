@@ -1,7 +1,7 @@
-import renderMovies from "./renderMovies";
+import renderMovies from './renderMovies.js';
 import {
-  capitalize
-} from "./utilities";
+  capitalize,
+} from './utilities.js';
 
 const handleCategoryClick = () => {
   const crumbBar = document.querySelector('[data-crumb-bar]');
@@ -12,9 +12,9 @@ const handleCategoryClick = () => {
   const body = document.querySelector('body');
   const toggle = document.querySelector('[data-nav-toggle]');
 
-  crumbReset.addEventListener('click', () => renderMovies())
+  crumbReset.addEventListener('click', () => renderMovies());
 
-  categoryLinks.forEach(link => link.addEventListener('click', () => {
+  categoryLinks.forEach((link) => link.addEventListener('click', () => {
     renderMovies(capitalize(link.innerText));
     if (crumbBar.children[1]) crumbBar.children[1].remove();
     const newCrumb = document.createElement('div');
@@ -25,11 +25,10 @@ const handleCategoryClick = () => {
       mobileNav.classList.remove('active');
       toggle.classList.toggle('active');
       body.style.overflow = 'visible';
-    };
-  }))
-}
+    }
+  }));
+};
 
 export default handleCategoryClick;
 
-
-//scifi
+// scifi

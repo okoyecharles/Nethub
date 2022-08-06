@@ -2,10 +2,10 @@ import './index.scss';
 import {
   displayMoviesCount,
 } from './modules/Counters.js';
-import navOperations from './modules/navOps';
-import searchOperations from './modules/searchOps';
-import handleCategoryClick from './modules/crumbOps';
-import renderMovies from './modules/renderMovies';
+import navOperations from './modules/navOps.js';
+import searchOperations from './modules/searchOps.js';
+import handleCategoryClick from './modules/crumbOps.js';
+import renderMovies from './modules/renderMovies.js';
 
 handleCategoryClick();
 

@@ -1,18 +1,17 @@
-import loadTemplate from './loadTemplate';
+import loadTemplate from './loadTemplate.js';
 import fetchMovies from './fetchMovies.js';
-import { handleCommentSubmit } from './handleSubmit.js';
+import handleCommentSubmit from './handleSubmit.js';
 import handleInfo from './infoOps.js';
 import { addComments } from './loadComments.js';
 import { getLikes, postLikes } from './manageLikes.js';
-import { convertRating } from './utilities';
-
+import { convertRating } from './utilities.js';
 
 /**
  * Render movies gets movies from an external API.
  * Render movies takes in an optional parameter.
  * This parameter filters all movies with that genre.
  * Very useful for the crumbar functionality.
- * @param {string} filter 
+ * @param {string} filter
  */
 
 const renderMovies = async (filter = 'none') => {
@@ -31,9 +30,8 @@ const renderMovies = async (filter = 'none') => {
   });
 
   if (filter !== 'none') {
-    data = data.filter(item => item.genres.includes(filter));
+    data = data.filter((item) => item.genres.includes(filter));
   }
-  console.log(data.length)
 
   movieGrid.innerHTML = '';
   // Renders all the Movies
@@ -75,8 +73,8 @@ const renderMovies = async (filter = 'none') => {
     likeButton.className = 'like__button';
     likeButton.innerHTML = '<span>Like</span><i class="fa-solid fa-thumbs-up"></i>';
     likeButton.addEventListener('click', (e) => {
-      postLikes(parseInt(e.target.closest('.card__container').dataset.index));
-      const prevLikes = parseInt(e.target.closest('.card__buttons').previousSibling.firstChild.innerHTML.slice(0, -6));
+      postLikes(parseInt(e.target.closest('.card__container').dataset.index, 10));
+      const prevLikes = parseInt(e.target.closest('.card__buttons').previousSibling.firstChild.innerHTML.slice(0, -6), 10);
       e.target.closest('.card__buttons').previousSibling.firstChild.innerHTML = `${prevLikes + 1} likes`;
       e.target.closest('.like__button').firstChild.innerHTML = 'Liked';
     }, { once: true });

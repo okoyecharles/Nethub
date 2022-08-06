@@ -1,5 +1,5 @@
 const handleInfo = (e) => {
-  const body = document.querySelector('body')
+  const body = document.querySelector('body');
   const dataHeader = e.target.previousSibling.children[0].innerText;
   const dataDescription = e.target.nextSibling.innerText;
   const infoPopup = document.querySelector('[data-info-popup]');
@@ -11,10 +11,10 @@ const handleInfo = (e) => {
   description.innerHTML = dataDescription;
 
   closeButton.addEventListener('click', () => {
-    infoPopup.classList.remove('active')
+    infoPopup.classList.remove('active');
     body.style.overflow = 'visible';
   }, {
-    once: true
+    once: true,
   });
   infoPopup.classList.add('active');
   body.style.overflow = 'hidden';

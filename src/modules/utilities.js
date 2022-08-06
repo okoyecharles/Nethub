@@ -1,3 +1,4 @@
+/* eslint-disable */
 const convertRating = (num) => {
   let rawRating = num;
   if (!rawRating) rawRating = 1;
@@ -33,12 +34,12 @@ const getTimeSpan = (postedDate, currentDate) => {
 };
 
 const capitalize = (string) => {
-  string = string.toLowerCase()
+  string = string.toLowerCase();
   if (string === 'science-fiction') return 'Science-Fiction';
   const first = string[0].toUpperCase();
-  const last = string.slice(1, );
+  const last = string.slice(1);
   const res = first + last;
-  return res
-}
+  return res;
+};
 
-export {convertRating, getTimeSpan, capitalize}
+export { convertRating, getTimeSpan, capitalize };

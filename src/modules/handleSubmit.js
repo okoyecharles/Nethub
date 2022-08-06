@@ -9,7 +9,7 @@ const handleCommentSubmit = async (e) => {
   const comment = form.elements.comment.value;
   const movieID = form.parentElement.parentElement.dataset.commentPopupIndex;
 
-  name.replace(/\s/g, '').length ? name : name = 'Anonymous';
+  name = name.replace(/\s/g, '').length ? name : name = 'Anonymous';
 
   const newComment = document.createElement('li');
   const dateUI = document.createElement('span');
@@ -30,4 +30,4 @@ const handleCommentSubmit = async (e) => {
   form.elements.comment.value = '';
 };
 
-export { handleCommentSubmit };
+export default handleCommentSubmit;

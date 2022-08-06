@@ -1,4 +1,4 @@
-import appID from './AppID';
+import appID from './AppID.js';
 
 const ID = appID;
 const postLikes = async (id) => {

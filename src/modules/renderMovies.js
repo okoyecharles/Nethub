@@ -1,10 +1,25 @@
-import convertRating from './convertRating.js';
+import loadTemplate from './loadTemplate';
+import fetchMovies from './fetchMovies.js';
 import { handleCommentSubmit } from './handleSubmit.js';
 import handleInfo from './infoOps.js';
 import { addComments } from './loadComments.js';
 import { getLikes, postLikes } from './manageLikes.js';
+import { convertRating } from './utilities';
 
-const renderMovies = async (data) => {
+
+/**
+ * Render movies gets movies from an external API.
+ * Render movies takes in an optional parameter.
+ * This parameter filters all movies with that genre.
+ * Very useful for the crumbar functionality.
+ * @param {string} filter 
+ */
+
+const renderMovies = async (filter = 'none') => {
+  // Website Skeleton Before Main Page Loads
+  loadTemplate(20);
+
+  let data = await fetchMovies();
   const body = document.querySelector('body');
   const movieGrid = document.querySelector('[data-movie-grid]');
   const likesArray = await getLikes();
@@ -15,13 +30,18 @@ const renderMovies = async (data) => {
     body.style.overflow = 'visible';
   });
 
-  movieGrid.innerHTML = '';
+  if (filter !== 'none') {
+    data = data.filter(item => item.genres.includes(filter));
+  }
+  console.log(data.length)
 
+  movieGrid.innerHTML = '';
   // Renders all the Movies
   data.forEach((movie) => {
     const cardContainer = document.createElement('div');
     cardContainer.className = 'card__container';
-    cardContainer.setAttribute('data-index', `${movie.id}`);
+    cardContainer.dataset.index = movie.id;
+
     cardContainer.style.background = `url(${movie.image.medium})`;
     cardContainer.style.backgroundSize = 'cover';
 

@@ -8,10 +8,12 @@
     padding-right: 0.5em;
     font-weight: 700;
     display: inline;
+    cursor: pointer;
 
     &::after {
       content: '|';
       color: orange;
+      transform: translateX(0.5em);
     }
   }
 }

@@ -84,6 +84,9 @@
     gap: 0.5em;
     transform: translateX(-100%);
     opacity: 0;
+    max-height: 10em;
+    overflow-y: scroll;
+    background: #00213d;
     height: 0;
     transition:
       height 0.25s ease-out,

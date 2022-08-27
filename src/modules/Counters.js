@@ -28,10 +28,10 @@ const getMoviesCounter = async () => {
 };
 
 const displayMoviesCount = async () => {
-  const all = document.querySelector('.count-movies');
-  const moviesCounter = await getMoviesCounter();
+  const crumb = document.querySelector('[data-crumb-bar]');
+  const moviesCount = await getMoviesCounter();
 
-  all.textContent = moviesCounter;
+  crumb.firstElementChild.firstElementChild.innerText = `Movies (${moviesCount})`;
 };
 export {
   getCommentCounter, getReservationCounter, getMoviesCounter, displayMoviesCount,

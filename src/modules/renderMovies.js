@@ -1,64 +1,118 @@
-import loadPopup from './loadPopup.js';
+import loadTemplate from './loadTemplate.js';
+import fetchMovies from './fetchMovies.js';
+import handleCommentSubmit from './handleSubmit.js';
+import handleInfo from './infoOps.js';
+import { addComments } from './loadComments.js';
 import { getLikes, postLikes } from './manageLikes.js';
+import { convertRating } from './utilities.js';
 
-const renderMovies = async (data) => {
-  const movies = document.querySelector('.movie-section');
+/**
+ * Render movies gets movies from an external API.
+ * Render movies takes in an optional parameter.
+ * This parameter filters all movies with that genre.
+ * Very useful for the crumbar functionality.
+ * @param {string} filter
+ */
+
+const renderMovies = async (filter = 'none') => {
+  // Website Skeleton Before Main Page Loads
+  loadTemplate(20);
+
+  let data = await fetchMovies();
+  const body = document.querySelector('body');
+  const movieGrid = document.querySelector('[data-movie-grid]');
   const likesArray = await getLikes();
+  const popup = document.querySelector('[data-comment-popup]');
+  const commmentPopupForm = document.querySelector('[data-comment-popup-form]');
+  popup.firstElementChild.firstElementChild.addEventListener('click', () => {
+    popup.classList.remove('active');
+    body.style.overflow = 'visible';
+  });
 
+  if (filter !== 'none') {
+    data = data.filter((item) => item.genres.includes(filter));
+  }
+
+  movieGrid.innerHTML = '';
   // Renders all the Movies
   data.forEach((movie) => {
+    const cardContainer = document.createElement('div');
+    cardContainer.className = 'card__container';
+    cardContainer.dataset.index = movie.id;
+
+    cardContainer.style.background = `url(${movie.image.medium})`;
+    cardContainer.style.backgroundSize = 'cover';
+
     const card = document.createElement('div');
     card.className = 'card';
-    card.setAttribute('data-index', `${movie.id}`);
 
-    const cardImage = document.createElement('img');
-    cardImage.className = 'card-image';
-    cardImage.src = movie.image.medium;
-    cardImage.alt = movie.name;
+    const cardContent = document.createElement('div');
+    cardContent.className = 'card__content';
 
     const cardTitle = document.createElement('h3');
-    cardTitle.className = 'card-title';
+    cardTitle.className = 'card__title';
     cardTitle.textContent = movie.name;
 
-    const likesContainer = document.createElement('div');
-    likesContainer.className = 'likesContainer';
-    const thumbsUp = document.createElement('div');
-    thumbsUp.className = 'tump';
-    thumbsUp.innerHTML = '<i class="fa-solid fa-thumbs-up"></i>';
+    const cardCount = document.createElement('div');
+    cardCount.className = 'card__count';
 
-    const likes = document.createElement('p');
-    likes.className = 'likes';
-    const filtered = [];
-    likesArray.forEach((item) => {
-      if (item.item_id === movie.id) filtered.push(item);
-    });
-    likes.textContent = filtered[0]?.likes || 0;
-    likesContainer.append(likes, thumbsUp);
+    const likesCount = document.createElement('div');
+    const [likesArrayFiltered] = likesArray.filter((item) => item.item_id === movie.id);
+    likesCount.className = 'like__count';
+    likesCount.textContent = `${likesArrayFiltered?.likes ?? 0} likes`;
 
-    thumbsUp.addEventListener('click', () => {
-      postLikes(movie.id);
-      likes.textContent = Number(likes.textContent) + 1;
-    });
+    const commentsCount = document.createElement('div');
+    commentsCount.className = 'comment__count';
+    commentsCount.innerHTML = convertRating(movie.rating.average);
 
-    const buttonContainer = document.createElement('div');
-    buttonContainer.className = 'buttons';
+    const cardButtons = document.createElement('div');
+    cardButtons.className = 'card__buttons';
+
+    const likeButton = document.createElement('button');
+    likeButton.type = 'button';
+    likeButton.className = 'like__button';
+    likeButton.innerHTML = '<span>Like</span><i class="fa-solid fa-thumbs-up"></i>';
+    likeButton.addEventListener('click', (e) => {
+      postLikes(parseInt(e.target.closest('.card__container').dataset.index, 10));
+      const prevLikes = parseInt(e.target.closest('.card__buttons').previousSibling.firstChild.innerHTML.slice(0, -6), 10);
+      e.target.closest('.card__buttons').previousSibling.firstChild.innerHTML = `${prevLikes + 1} likes`;
+      e.target.closest('.like__button').firstChild.innerHTML = 'Liked';
+    }, { once: true });
 
     const commentButton = document.createElement('button');
     commentButton.type = 'button';
-    commentButton.textContent = 'Comments';
-    commentButton.className = 'comment';
-    commentButton.addEventListener('click', () => loadPopup(commentButton));
+    commentButton.className = 'comment__button';
+    commentButton.dataset.commentButtonIndex = movie.id;
+    commentButton.innerHTML = '<span>Comment</span><i class="fa-solid fa-comment"></i>';
+    commentButton.addEventListener('click', (e) => {
+      popup.classList.add('active');
+      popup.dataset.commentPopupIndex = e.target.closest('.comment__button').dataset.commentButtonIndex;
 
-    const reservationButton = document.createElement('button');
-    reservationButton.type = 'button';
-    reservationButton.textContent = 'Reservation';
-    reservationButton.className = 'reservation';
-    reservationButton.addEventListener('click', () => loadPopup(reservationButton));
+      if (popup.classList.contains('active')) {
+        body.style.overflow = 'hidden';
+      }
+    });
 
-    buttonContainer.append(commentButton, reservationButton);
-    card.append(cardImage, cardTitle, likesContainer, buttonContainer);
-    movies.append(card);
+    const cardInfo = document.createElement('i');
+    cardInfo.className = 'fa-solid fa-circle-info card__info';
+    cardInfo.onclick = handleInfo;
+
+    const cardDescription = document.createElement('p');
+    cardDescription.innerText = movie.summary;
+    cardDescription.style.display = 'none';
+
+    // Append Children
+    cardCount.append(likesCount, commentsCount);
+    cardButtons.append(likeButton, commentButton);
+    cardContent.append(cardTitle, cardCount, cardButtons);
+    card.append(cardContent, cardInfo, cardDescription);
+    cardContainer.append(card);
+
+    movieGrid.append(cardContainer);
   });
+
+  addComments();
+  commmentPopupForm.onsubmit = handleCommentSubmit;
 };
 
 export default renderMovies;

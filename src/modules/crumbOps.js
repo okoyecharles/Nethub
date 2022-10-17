@@ -12,7 +12,10 @@ const handleCategoryClick = () => {
   const body = document.querySelector('body');
   const toggle = document.querySelector('[data-nav-toggle]');
 
-  crumbReset.addEventListener('click', () => renderMovies());
+  crumbReset.addEventListener('click', () => {
+    renderMovies();
+    if (crumbBar.children[1]) crumbBar.children[1].remove();
+  });
 
   categoryLinks.forEach((link) => link.addEventListener('click', () => {
     renderMovies(capitalize(link.innerText));
@@ -30,5 +33,3 @@ const handleCategoryClick = () => {
 };
 
 export default handleCategoryClick;
-
-// scifi

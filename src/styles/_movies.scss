@@ -11,9 +11,9 @@
 }
 
 .card__container {
-  font-size: 1.15em;
-  width: 241.5px;
-  height: 339.25px;
+  --size: 15em;
+  width: var(--size);
+  height: calc(var(--size) * 1.4);
   border-radius: 0.5em;
   overflow: hidden;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
@@ -191,5 +191,15 @@
     font-size: 1.25em;
     opacity: 0.5;
     transition: opacity 0.25s ease-in;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .movies__grid {
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)) !important;
+    row-gap: 0.5em !important;
+  }
+  .card__container {
+    --size: 11em;
   }
 }

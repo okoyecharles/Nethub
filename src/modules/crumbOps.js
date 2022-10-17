@@ -33,5 +33,3 @@ const handleCategoryClick = () => {
 };
 
 export default handleCategoryClick;
-
-// scifi
